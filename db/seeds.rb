@@ -5,3 +5,15 @@
 #
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
+
+User.create(:name => 'test01', :password => 'password', :role => 'member')
+User.create(:name => 'test02', :password => 'password', :role => 'member')
+User.create(:name => 'test03', :password => 'password', :role => 'member')
+User.create(:name => 'test04', :password => 'password', :role => 'member')
+User.create(:name => 'test05', :password => 'password', :role => 'member')
+
+User.create(:name => 'store01', :password => 'password', :role => 'store')
+User.create(:name => 'store02', :password => 'password', :role => 'store')
+User.create(:name => 'store03', :password => 'password', :role => 'store')
+User.create(:name => 'store04', :password => 'password', :role => 'store')
+User.create(:name => 'store05', :password => 'password', :role => 'store')

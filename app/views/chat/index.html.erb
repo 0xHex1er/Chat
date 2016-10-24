@@ -1,6 +1,5 @@
 <%= javascript_include_tag "socketcluster.js" %>
 <script>
-
   var socket = socketCluster.connect({
     host:'localhost',
     port: 3333
@@ -10,10 +9,12 @@
   broadcastChannel.watch(function(data) {
     console.log(data);
   });
-
-
-
 </script>
 
 <h1> Chat </h1>
+  <% if @store.count > 0 %>
+    <% @store.each do |store| %>
+        <a><%= store.name %></a>
+    <% end %>
+  <% end %>
 <hr>

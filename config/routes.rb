@@ -1,5 +1,7 @@
 Rails.application.routes.draw do
 
+  get 'user/login'
+
   root :to => "chat#index"
 
   controller :chat do
