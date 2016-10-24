@@ -75,7 +75,6 @@ GEM
     nio4r (1.2.1)
     nokogiri (1.6.8.1-x86-mingw32)
       mini_portile2 (~> 2.1.0)
-    puma (3.6.0)
     rack (2.0.1)
     rack-test (0.6.3)
       rack (>= 1.0)
@@ -146,7 +145,6 @@ DEPENDENCIES
   coffee-rails (~> 4.2)
   jbuilder (~> 2.5)
   jquery-rails
-  puma (~> 3.0)
   rails (~> 5.0.0)
   sass-rails (~> 5.0)
   turbolinks (~> 5)

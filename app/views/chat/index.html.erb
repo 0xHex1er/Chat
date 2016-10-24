@@ -1,0 +1,19 @@
+<%= javascript_include_tag "socketcluster.js" %>
+<script>
+
+  var socket = socketCluster.connect({
+    host:'localhost',
+    port: 3333
+  });
+
+  var broadcastChannel = socket.subscribe('broadcast');
+  broadcastChannel.watch(function(data) {
+    console.log(data);
+  });
+
+
+
+</script>
+
+<h1> Chat </h1>
+<hr>

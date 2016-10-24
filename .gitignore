@@ -15,3 +15,15 @@
 
 # Ignore Byebug command history file.
 .byebug_history
+
+# Dependency directories
+node_modules
+jspm_packages
+
+# Optional npm cache directory
+.npm
+
+
+.iws
+workspace.xml
+tasks.xml
