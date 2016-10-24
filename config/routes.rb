@@ -1,14 +1,19 @@
 Rails.application.routes.draw do
 
-  get 'user/login'
+  get 'member/login'
 
-  root :to => "chat#index"
+  root :to => "member#login"
 
   controller :chat do
     get 'chat/index'  => :index
   end
 
-  # root 'chat/#index'
+  controller :user do
+    get 'user/login'  => :login
+    post 'user/check_login'  => :check_login
+    get 'user/member/:username' => :member
+    get 'user/store/:username' => :store
+  end
 
-  # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
+
 end
