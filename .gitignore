@@ -27,3 +27,4 @@ jspm_packages
 .iws
 workspace.xml
 tasks.xml
+.idea
