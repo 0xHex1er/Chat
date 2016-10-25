@@ -9,15 +9,37 @@
     border: darkgray thin solid;
     height: 400px;
     margin-bottom: 5px;
+    overflow-y: auto;
   }
 
   .red {
     background-color: red;
   }
+
+  .grey {
+    background-color: gainsboro;
+  }
+
+  .right-msg {
+    float: right;
+    border: gainsboro thin solid;
+    line-height: 30px;
+    margin: 5px;
+    padding: 5px;
+  }
+
+  .left-msg {
+    float: left;
+    border: gainsboro thin solid;
+    line-height: 30px;
+    margin: 5px;
+    padding: 5px;
+  }
+
 </style>
 <div class="container">
   <div class="row">
-    <h2> ร้าน : <a id="store"><%= @login_user.name %></a></h2>
+    <h2> ร้าน : <a id="store"><%= @login_user.name %></a> สนทนากับ : <a id="username"></a></h2>
     <hr>
   </div>
   <div class="row">
@@ -46,18 +68,19 @@
   function recieve_chat_store() {
     var recieve_chat_store = socket.subscribe('recieve_chat_store');
     recieve_chat_store.watch(function(data){
-      console.log(data);
-      var current_user = String($("#store").text().trim());
-      var current_user_data = String(data.store.trim());
-//      console.log(data.store);
-      console.log(current_user);
-      console.log(current_user_data);
 
-      if(current_user == current_user_data){
+      var current_user = String($("#store").text().trim());
+      var current_user_data = String(data.send_form.trim());
+//      console.log(data.store);
+//      console.log(current_user);
+//      console.log(current_user_data);
+
+      // render list msg
+      if(current_user != current_user_data){
         var layout_user =  $('#'+data.user);
 
         if (layout_user.length == 0){
-          $(".list_msg").append('<p id='+ data.user +'>'+data.user+'<span class="badge red" id='+ data.user +'>1</span></p>');
+          $(".list_msg").append('<p id='+ data.user +' onclick="select_user(\'' + data.user + '\')">'+data.user+'<span class="badge red" id='+ data.user +'>1</span></p>');
           var badge = $("span[id='" + data.user + "']");
 //          console.log(badge);
         }else {
@@ -69,17 +92,48 @@
         }
       }
 
+      // render show message
+      if($("#username").text() != "" && $("#username").text() == data.send_form){
+        console.log(' IN ');
+          $(".show_msg").append('<div class="row"><div class="left-msg">' + data.send_form + ' พิมพ์ว่า : ' + data.message + '</div></div>');
+      }else if ($("#username").text() != "" && $("#store").text() == data.send_form){
+        console.log(' IN ELSE ');
+          $(".show_msg").append('<div class="row"><div class="right-msg">' + data.store + ' พิมพ์ว่า : ' + data.message + '</div></div>');
+      }
+
+      // set bottom scroll
+      $(".show_msg").scrollTop($('.show_msg').height());
+
     });
   }
 
   function send_msg_to_store(){
     var data = {
-      user: $("#user").text(),
+      user: $("#username").text(),
       store: $("#store").text(),
-      message: $("#txt_msg").val()
-    }
+      message: $("#txt_msg").val(),
+      send_form: $("#store").text()
+    };
+
     socket.emit('chat_store', data);
     $("#txt_msg").val("");
+  }
+
+
+  function select_user(data) {
+    console.log(data);
+    if(data != ""){
+      $("#username").text(data);
+
+      //reset show message
+      $(".show_msg > div").remove();
+
+      //reset badge
+      var current_badge = $("span[id='"+ data +"']");
+
+      $(current_badge).replaceWith('<span class="badge grey" id='+ data +'>'+ parseInt(0) +'</span></p>');
+
+    }
   }
 
   $(document).ready(function(){

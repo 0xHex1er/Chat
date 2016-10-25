@@ -8,6 +8,23 @@
    min-height: 400px;
    border: gainsboro thin solid;
  }
+
+ .right-msg {
+   float: right;
+   border: gainsboro thin solid;
+   line-height: 30px;
+   margin: 5px;
+   padding: 5px;
+ }
+
+ .left-msg {
+   float: left;
+   border: gainsboro thin solid;
+   line-height: 30px;
+   margin: 5px;
+   padding: 5px;
+ }
+
 </style>
 
 <div class="container">
@@ -36,6 +53,14 @@
     var recieve_chat_store = socket.subscribe('recieve_chat_store');
     recieve_chat_store.watch(function(data){
       console.log(data);
+      //render
+      if(data.user == $("#user").text().trim()){
+        if(data.send_form == $("#store").text().trim()){
+          $("#show_msg").append('<div class="row"><div class="left-msg">' + data.store + ' พิมพ์ว่า : ' + data.message + '</div></div>');
+        }else{
+          $("#show_msg").append('<div class="row"><div class="right-msg">' + data.user + ' พิมพ์ว่า : ' + data.message + '</div></div>');
+        }
+      }
     });
   }
 
@@ -43,10 +68,12 @@
     var data = {
       user: $("#user").text().trim(),
       store: $("#store").text().trim(),
-      message: $("#txt_msg").val()
+      message: $("#txt_msg").val(),
+      send_form: $("#user").text().trim()
     }
     socket.emit('chat_store', data);
     $("#txt_msg").val("");
+
   }
 
   $(document).ready(function(){
