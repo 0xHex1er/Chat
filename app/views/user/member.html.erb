@@ -1,8 +1,29 @@
 <%= javascript_include_tag "bootstrap.js" %>
 <%= stylesheet_link_tag "bootstrap.css" %>
-
+<style>
+  .layout-store{
+    border: grey thin solid;
+    border-radius: 5px;
+    min-height: 50px;
+    margin: 5px;
+    text-align: center;
+    line-height: 50px;
+  }
+</style>
 <div class="container">
   <div class="row">
     <h2> Member : <%= params[:username] %></h2>
+    <hr>
+    <div class="row">
+      <div class="container">
+        <% if @store.count > 0 %>
+          <% @store.each do |st| %>
+            <div class="col-xs-4 layout-store">
+              <a><%= st.name %></a>
+            </div>
+          <% end %>
+        <% end %>
+      </div>
+    </div>
   </div>
 </div>

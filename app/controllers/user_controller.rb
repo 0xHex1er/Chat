@@ -16,10 +16,17 @@ class UserController < ApplicationController
   end
 
   def member
-
+    @login_user = User.where(:name => params[:username])
+    if @login_user.count > 0
+      @login_user = @login_user[0]
+      @store = User.where(:role => "store")
+    end
   end
 
   def store
-
+    @login_user = User.where(:name => params[:username])
+    if @login_user.count > 0
+      @login_user = @login_user[0]
+    end
   end
 end
