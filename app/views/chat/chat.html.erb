@@ -41,11 +41,12 @@
 
   function send_msg_to_store(){
     var data = {
-      user: $("#user").text(),
-      store: $("#store").text(),
+      user: $("#user").text().trim(),
+      store: $("#store").text().trim(),
       message: $("#txt_msg").val()
     }
     socket.emit('chat_store', data);
+    $("#txt_msg").val("");
   }
 
   $(document).ready(function(){

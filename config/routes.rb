@@ -6,7 +6,9 @@ Rails.application.routes.draw do
 
   controller :chat do
     get 'chat/index'  => :index
+    get 'chat/:store_id' => :store_chat
     get 'chat/:store_id/:user_id' => :chat
+
   end
 
   controller :user do

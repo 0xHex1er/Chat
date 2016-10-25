@@ -1,9 +1,93 @@
+<%= javascript_include_tag "jquery.js" %>
 <%= javascript_include_tag "bootstrap.js" %>
+<%= javascript_include_tag "socketcluster.js" %>
 <%= stylesheet_link_tag "bootstrap.css" %>
 
+
+<style>
+  .show_msg, .list_msg {
+    border: darkgray thin solid;
+    height: 400px;
+    margin-bottom: 5px;
+  }
+
+  .red {
+    background-color: red;
+  }
+</style>
 <div class="container">
   <div class="row">
-    <h2> Store : <%= params[:username] %></h2>
+    <h2> ร้าน : <a id="store"><%= @login_user.name %></a></h2>
     <hr>
   </div>
+  <div class="row">
+    <div class="col-xs-8 show_msg">
+      <!-- Chat Message -->
+    </div>
+    <div class="col-xs-4 list_msg">
+      <!-- List of Chat -->
+    </div>
+  </div>
+  <div class="row">
+    <input type="text" id="txt_msg" class="col-xs-9">
+    <input type="button" id="btn_send" value=" Send Message " class="col-xs-3">
+  </div>
 </div>
+
+
+
+
+<script>
+  var socket = socketCluster.connect({
+    host:'localhost',
+    port: 3333
+  });
+
+  function recieve_chat_store() {
+    var recieve_chat_store = socket.subscribe('recieve_chat_store');
+    recieve_chat_store.watch(function(data){
+      console.log(data);
+      var current_user = String($("#store").text().trim());
+      var current_user_data = String(data.store.trim());
+//      console.log(data.store);
+      console.log(current_user);
+      console.log(current_user_data);
+
+      if(current_user == current_user_data){
+        var layout_user =  $('#'+data.user);
+
+        if (layout_user.length == 0){
+          $(".list_msg").append('<p id='+ data.user +'>'+data.user+'<span class="badge red" id='+ data.user +'>1</span></p>');
+          var badge = $("span[id='" + data.user + "']");
+//          console.log(badge);
+        }else {
+          var current_badge = $("span[id='"+ data.user +"']");
+          var elemet = current_badge[0];
+          var current_count = elemet.innerHTML
+//          console.log(elemet.innerHTML);
+          $(elemet).replaceWith('<span class="badge red" id='+ data.user +'>'+ (parseInt(current_count)+1) +'</span></p>');
+        }
+      }
+
+    });
+  }
+
+  function send_msg_to_store(){
+    var data = {
+      user: $("#user").text(),
+      store: $("#store").text(),
+      message: $("#txt_msg").val()
+    }
+    socket.emit('chat_store', data);
+    $("#txt_msg").val("");
+  }
+
+  $(document).ready(function(){
+    recieve_chat_store();
+
+    $('#btn_send').click(function(e){
+      send_msg_to_store();
+    });
+
+  });
+</script>
