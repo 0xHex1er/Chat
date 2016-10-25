@@ -1,0 +1,18 @@
+{
+    "sourcePort": 7999,
+    "balancerCount": 4,
+    "targetDeactivationDuration": 5000,
+    "sessionExpiry": 2000,
+    "stickiness": true,
+    "balancerControllerPath": "loadbalancer.js",
+    "targets": [
+    {
+        "host": "192.168.1.240",
+        "port": 3000
+    },
+    {
+        "host": "192.168.1.240",
+        "port": 4000
+    }
+    ]
+}

@@ -2,10 +2,11 @@ Rails.application.routes.draw do
 
   get 'member/login'
 
-  root :to => "member#login"
+  root :to => "user#login"
 
   controller :chat do
     get 'chat/index'  => :index
+    get 'chat/:store_id/:user_id' => :chat
   end
 
   controller :user do

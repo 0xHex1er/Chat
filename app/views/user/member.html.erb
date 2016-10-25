@@ -19,7 +19,7 @@
         <% if @store.count > 0 %>
           <% @store.each do |st| %>
             <div class="col-xs-4 layout-store">
-              <a><%= st.name %></a>
+              <a href="../../chat/<%= st.id %>/<%= @login_user.id %>"><%= st.name %></a>
             </div>
           <% end %>
         <% end %>

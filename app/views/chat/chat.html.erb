@@ -1,0 +1,59 @@
+<%= javascript_include_tag "jquery.js" %>
+<%= javascript_include_tag "bootstrap.js" %>
+<%= javascript_include_tag "socketcluster.js" %>
+<%= stylesheet_link_tag "bootstrap.css" %>
+
+<style>
+ .show_msg{
+   min-height: 400px;
+   border: gainsboro thin solid;
+ }
+</style>
+
+<div class="container">
+  <h1> [ คุณ <a id="user"><%= @user.name %></a> : คุยกับร้าน <a id="store"><%= @store.name %> </a>] </h1>
+  <hr>
+  <div class="row" style="margin-bottom: 5px;">
+    <div id="show_msg" class="show_msg col-xs-12">
+
+    </div>
+  </div>
+  <div class="row">
+    <input type="text" id="txt_msg" class="col-xs-9">
+    <input type="button" id="btn_send" value=" Send Message " class="col-xs-3">
+  </div>
+</div>
+
+
+
+<script>
+  var socket = socketCluster.connect({
+    host:'localhost',
+    port: 3333
+  });
+
+  function recieve_chat_store() {
+    var recieve_chat_store = socket.subscribe('recieve_chat_store');
+    recieve_chat_store.watch(function(data){
+      console.log(data);
+    });
+  }
+
+  function send_msg_to_store(){
+    var data = {
+      user: $("#user").text(),
+      store: $("#store").text(),
+      message: $("#txt_msg").val()
+    }
+    socket.emit('chat_store', data);
+  }
+
+  $(document).ready(function(){
+    recieve_chat_store();
+
+    $('#btn_send').click(function(e){
+      send_msg_to_store();
+    });
+
+  });
+</script>
