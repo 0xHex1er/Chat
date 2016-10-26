@@ -1,6 +1,7 @@
 var async = require('async');
 var SocketCluster = require('socketcluster').SocketCluster;
 var env = require('node-env-file');
+
 env(__dirname+'/.env');
 socketCluster = new SocketCluster({
 	workers: require('os').cpus().length,
