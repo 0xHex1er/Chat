@@ -146,4 +146,13 @@
     });
 
   });
+
+  window.addEventListener('popstate', function(event) {
+    if (event.state) {
+      socket.disconnect();
+      location.reload();
+    }
+  }, false);
+
+
 </script>

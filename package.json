@@ -24,6 +24,7 @@
     "async": "^2.1.2",
     "loadbalancer": "^0.9.26",
     "minimist": "^1.2.0",
+    "mongodb": "^2.2.11",
     "node-env-file": "^0.1.8",
     "redis": "^2.6.2",
     "sc-broker": "^2.2.3",
