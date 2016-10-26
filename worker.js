@@ -33,13 +33,12 @@ module.exports.run = function (worker) {
 
     socket.on('chat_store', function(data){
       console.log('=========== Chat Store =========');
-      console.log(data);
+      console.log(socket.exchange);
       socket.global.publish('recieve_chat_store', data);
     });
 
     socket.on('disconnect', function(){
       console.log('=========== Disconnect =========');
-      socket.global.unsubscribe('chat_store');
     });
 
   });

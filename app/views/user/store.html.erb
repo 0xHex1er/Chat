@@ -79,21 +79,23 @@
       if(current_user != current_user_data){
         var layout_user =  $('#'+data.user);
 
-        if (layout_user.length == 0){
-          $(".list_msg").append('<p id='+ data.user +' onclick="select_user(\'' + data.user + '\')">'+data.user+'<span class="badge red" id='+ data.user +'>1</span></p>');
-          var badge = $("span[id='" + data.user + "']");
+        if(current_user == String(data.store).trim()){
+          if (layout_user.length == 0){
+            $(".list_msg").append('<p id='+ data.user +' onclick="select_user(\'' + data.user + '\')">'+data.user+'<span class="badge red" id='+ data.user +'>1</span></p>');
+            var badge = $("span[id='" + data.user + "']");
 //          console.log(badge);
-        }else {
-          var current_badge = $("span[id='"+ data.user +"']");
-          var elemet = current_badge[0];
-          var current_count = elemet.innerHTML
+          }else {
+            var current_badge = $("span[id='"+ data.user +"']");
+            var elemet = current_badge[0];
+            var current_count = elemet.innerHTML
 //          console.log(elemet.innerHTML);
-          $(elemet).replaceWith('<span class="badge red" id='+ data.user +'>'+ (parseInt(current_count)+1) +'</span></p>');
+            $(elemet).replaceWith('<span class="badge red" id='+ data.user +'>'+ (parseInt(current_count)+1) +'</span></p>');
+          }
         }
       }
 
       // render show message
-      if($("#username").text() != "" && $("#username").text() == data.send_form){
+      if($("#username").text() != "" && ($("#username").text() == data.send_form) && $("#store").text() == data.store){
         console.log(' IN ');
           $(".show_msg").append('<div class="row"><div class="left-msg">' + data.send_form + ' พิมพ์ว่า : ' + data.message + '</div></div>');
       }else if ($("#username").text() != "" && $("#store").text() == data.send_form){

@@ -83,5 +83,24 @@
       send_msg_to_store();
     });
 
+//    window.addEventListener('popstate', function(event) {
+//      if (event.state) {
+////
+//        socket.unsubscribe('recieve_chat_store');
+//        console.log(socket);
+//        socket.disconnect();
+//        console.log(socket);
+//      }
+//    }, false);
+
   });
+
+  window.addEventListener('popstate', function(event) {
+        if (event.state) {
+          socket.disconnect();
+          location.reload();
+        }
+  }, false);
+
+
 </script>
