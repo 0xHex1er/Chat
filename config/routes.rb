@@ -18,5 +18,9 @@ Rails.application.routes.draw do
     get 'user/store/:username' => :store
   end
 
+  controller :api do
+    get 'api/store_get_list_chat_user/:store' => :store_get_list_chat_user
+    get 'api/get_load_message/:store/:user'  => :get_load_message
+  end
 
 end

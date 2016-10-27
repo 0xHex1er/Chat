@@ -45,8 +45,8 @@
 
 <script>
   var socket = socketCluster.connect({
-    host:'localhost',
-    port: 3333
+    host:'192.168.1.240',
+    port: 7999
   });
 
   function recieve_chat_store() {
@@ -59,6 +59,26 @@
           $("#show_msg").append('<div class="row"><div class="left-msg">' + data.store + ' พิมพ์ว่า : ' + data.message + '</div></div>');
         }else{
           $("#show_msg").append('<div class="row"><div class="right-msg">' + data.user + ' พิมพ์ว่า : ' + data.message + '</div></div>');
+        }
+      }
+    });
+  }
+
+  function init_load_message() {
+    $.ajax({
+      method: "GET",
+      url: "http://192.168.1.240:3000/api/get_load_message/" + $("#store").text().trim()  + "/" + $("#user").text().trim(),
+    })
+    .done(function( data ) {
+      console.log(data);
+      for(i=0; i<data.length; i++){
+        //render
+        if(data[i].user == $("#user").text().trim()){
+          if(data[i].send_form == $("#store").text().trim()){
+            $("#show_msg").append('<div class="row"><div class="left-msg">' + data[i].store + ' พิมพ์ว่า : ' + data[i].message + '</div></div>');
+          }else{
+            $("#show_msg").append('<div class="row"><div class="right-msg">' + data[i].user + ' พิมพ์ว่า : ' + data[i].message + '</div></div>');
+          }
         }
       }
     });
@@ -78,6 +98,8 @@
 
   $(document).ready(function(){
     recieve_chat_store();
+
+    init_load_message();
 
     $('#btn_send').click(function(e){
       send_msg_to_store();
