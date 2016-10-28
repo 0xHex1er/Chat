@@ -61,7 +61,7 @@
 
 <script>
   var socket = socketCluster.connect({
-    host:'192.168.1.240',
+    host:'192.168.1.147',
     port: 7999
   });
 
@@ -112,21 +112,25 @@
   }
 
   function send_msg_to_store(){
-    var data = {
-      user: $("#username").text(),
-      store: $("#store").text(),
-      message: $("#txt_msg").val(),
-      send_form: $("#store").text()
-    };
+    if(!$("#username").text() == ""){
+      var data = {
+        user: $("#username").text(),
+        store: $("#store").text(),
+        message: $("#txt_msg").val(),
+        send_form: $("#store").text()
+      };
 
-    socket.emit('chat_store', data);
+      socket.emit('chat_store', data);
+    }else {
+      alert(' ยังไม่ได้เลือกผู้สนทนา ');
+    }
     $("#txt_msg").val("");
   }
 
   function init_load_list_chat_user(){
     $.ajax({
       method: "GET",
-      url: "http://192.168.1.240:3000/api/store_get_list_chat_user/" + $("#store").text().trim(),
+      url: "http://192.168.1.147:3000/api/store_get_list_chat_user/" + $("#store").text().trim(),
     })
         .done(function( data ) {
           console.log(data);
@@ -141,7 +145,7 @@
   function init_load_message() {
     $.ajax({
       method: "GET",
-      url: "http://192.168.1.240:3000/api/get_load_message/" + $("#store").text().trim()  + "/" + $("#username").text().trim(),
+      url: "http://192.168.1.147:3000/api/get_load_message/" + $("#store").text().trim()  + "/" + $("#username").text().trim(),
     })
     .done(function( data ) {
 //      console.log(data);

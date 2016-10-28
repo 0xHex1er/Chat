@@ -60,6 +60,85 @@ ok
 ok
 ok
 ok
+Error: There are no available targets
+    at EventEmitter.LoadBalancer._connectToTarget (/usr/local/lib/node_modules/loadbalancer/loadbalancer.js:169:14)
+    at /usr/local/lib/node_modules/loadbalancer/loadbalancer.js:201:16
+    at nextTickCallbackWith0Args (node.js:420:9)
+    at process._tickDomainCallback (node.js:390:13)
+ok
+Error: There are no available targets
+    at EventEmitter.LoadBalancer._connectToTarget (/usr/local/lib/node_modules/loadbalancer/loadbalancer.js:169:14)
+    at /usr/local/lib/node_modules/loadbalancer/loadbalancer.js:201:16
+    at nextTickCallbackWith0Args (node.js:420:9)
+    at process._tickDomainCallback (node.js:390:13)
+ok
+ok
+ok
+ok
+ok
+ok
+ok
+ok
+ok
+ok
+ok
+ok
+ok
+ok
+ok
+ok
+ok
+ok
+ok
+ok
+ok
+ok
+ok
+ok
+ok
+ok
+ok
+ok
+ok
+ok
+ok
+Error: There are no available targets
+    at EventEmitter.LoadBalancer._connectToTarget (/usr/local/lib/node_modules/loadbalancer/loadbalancer.js:169:14)
+    at /usr/local/lib/node_modules/loadbalancer/loadbalancer.js:201:16
+    at nextTickCallbackWith0Args (node.js:420:9)
+    at process._tickDomainCallback (node.js:390:13)
+ok
+Error: There are no available targets
+    at EventEmitter.LoadBalancer._connectToTarget (/usr/local/lib/node_modules/loadbalancer/loadbalancer.js:169:14)
+    at /usr/local/lib/node_modules/loadbalancer/loadbalancer.js:201:16
+    at nextTickCallbackWith0Args (node.js:420:9)
+    at process._tickDomainCallback (node.js:390:13)
+ok
+Error: There are no available targets
+    at EventEmitter.LoadBalancer._connectToTarget (/usr/local/lib/node_modules/loadbalancer/loadbalancer.js:169:14)
+    at EventEmitter.LoadBalancer._acceptConnection (/usr/local/lib/node_modules/loadbalancer/loadbalancer.js:311:8)
+    at /usr/local/lib/node_modules/loadbalancer/loadbalancer.js:281:12
+    at /usr/local/lib/node_modules/loadbalancer/loadbalancer.js:228:7
+    at /usr/local/lib/node_modules/loadbalancer/node_modules/async/lib/async.js:157:25
+    at /Users/ideractive/Desktop/Chat/loadbalancer.js:16:9
+    at /usr/local/lib/node_modules/loadbalancer/node_modules/async/lib/async.js:1080:20
+    at iterate (/usr/local/lib/node_modules/loadbalancer/node_modules/async/lib/async.js:149:13)
+    at async.eachSeries (/usr/local/lib/node_modules/loadbalancer/node_modules/async/lib/async.js:165:9)
+    at go (/usr/local/lib/node_modules/loadbalancer/node_modules/async/lib/async.js:1079:20)
+ok
+ok
+ok
+ok
+ok
+ok
+ok
+ok
+ok
+ok
+ok
+ok
+ok
+ok
 ok
 ok
 ok

@@ -22,6 +22,7 @@
   "homepage": "https://github.com/0xHex1er/Chat#readme",
   "dependencies": {
     "async": "^2.1.2",
+    "chunk": "0.0.2",
     "loadbalancer": "^0.9.26",
     "minimist": "^1.2.0",
     "mongodb": "^2.2.11",

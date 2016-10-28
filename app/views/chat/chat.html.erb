@@ -6,7 +6,9 @@
 <style>
  .show_msg{
    min-height: 400px;
+   max-height: 400px;
    border: gainsboro thin solid;
+   overflow-y: scroll;
  }
 
  .right-msg {
@@ -25,6 +27,16 @@
    padding: 5px;
  }
 
+ .layout-loading {
+   vertical-align: middle;
+   margin: 0 auto;
+   text-align: center;
+   display: none;
+ }
+ .loading-img {
+   margin: 0px auto;
+ }
+
 </style>
 
 <div class="container">
@@ -32,6 +44,9 @@
   <hr>
   <div class="row" style="margin-bottom: 5px;">
     <div id="show_msg" class="show_msg col-xs-12">
+      <div class="layout-loading">
+        <%= image_tag("loader.gif", class: "loading-img") %>
+      </div>
 
     </div>
   </div>
@@ -45,8 +60,10 @@
 
 <script>
   var socket = socketCluster.connect({
-    host:'192.168.1.240',
-    port: 7999
+    host:'192.168.1.147',
+    port: 7999,
+    pendingReconnect: true,
+    pendingReconnectTimeout: 1000
   });
 
   function recieve_chat_store() {
@@ -65,9 +82,13 @@
   }
 
   function init_load_message() {
+    $(".layout-loading").css('display','block');
+    $(".show_msg").css('background-color','#F8F8FF');
+    $("#txt_msg").prop( "disabled", false );
+    $("#btn_send").prop( "disabled", false );
     $.ajax({
       method: "GET",
-      url: "http://192.168.1.240:3000/api/get_load_message/" + $("#store").text().trim()  + "/" + $("#user").text().trim(),
+      url: "http://192.168.1.147:3000/api/get_load_message/" + $("#store").text().trim()  + "/" + $("#user").text().trim(),
     })
     .done(function( data ) {
       console.log(data);
@@ -81,6 +102,8 @@
           }
         }
       }
+      $(".layout-loading").css('display','none');
+      $(".show_msg").css('background-color','white');
     });
   }
 
@@ -88,41 +111,44 @@
     var data = {
       user: $("#user").text().trim(),
       store: $("#store").text().trim(),
-      message: $("#txt_msg").val(),
+      message: $("#txt_msg").val() + i,
       send_form: $("#user").text().trim()
-    }
+    };
     socket.emit('chat_store', data);
     $("#txt_msg").val("");
-
   }
+
+  window.addEventListener('popstate', function(event) {
+    if (event.state) {
+      socket.disconnect();
+      location.reload();
+    }
+  }, false);
+
+
 
   $(document).ready(function(){
     recieve_chat_store();
 
-    init_load_message();
+    socket.on('connect', function(socket){
+      console.log(socket);
+      console.log('connect id : '+ socket.id);
+      init_load_message();
+    });
+
+    socket.on('error', function(){
+      $(".layout-loading").css('display','block');
+      $(".show_msg").css('background-color','#F8F8FF');
+      $("#txt_msg").prop( "disabled", true );
+      $("#btn_send").prop( "disabled", true );
+      console.log('error');
+      socket.connect();
+    });
 
     $('#btn_send').click(function(e){
       send_msg_to_store();
     });
 
-//    window.addEventListener('popstate', function(event) {
-//      if (event.state) {
-////
-//        socket.unsubscribe('recieve_chat_store');
-//        console.log(socket);
-//        socket.disconnect();
-//        console.log(socket);
-//      }
-//    }, false);
-
   });
-
-  window.addEventListener('popstate', function(event) {
-        if (event.state) {
-          socket.disconnect();
-          location.reload();
-        }
-  }, false);
-
 
 </script>

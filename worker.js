@@ -2,22 +2,56 @@ var fs = require('fs');
 var path = require('path');
 var async = require('async');
 var ObjectID = require('mongodb').ObjectID;
+var chunk = require('chunk');
+
+var queueData = [];
+var maxLength = 200;
+var count = 0;
+var dataInQueue = [];
+
+var setQueue = function(data,callback){
+    dataInQueue = dataInQueue.concat(data);
+    queueData=[];
+    callback();
+};
+
+var setDataToQueue = function(data, callback) {
+  console.log("data in queue");
+  console.log(queueData.length);
+
+  if (queueData.length > 0) {
+    setQueue(queueData, function () {
+      var dataChunk = chunk(dataInQueue,maxLength)
+
+      for(var i=0;i<=dataChunk.length;i++)
+      {
+        if(typeof dataChunk[i] != 'undefined'){
+          q.push([{objectData:dataChunk[i]}],function() {
+            console.log("push data in queue");
+          });
+        }
+      }
+      dataInQueue = [];
+    });
+  }
+};
+setInterval(setDataToQueue, 12000,"send to function");
+
+
 
 var save_chat_message = function(socket, db, data) {
   // create a queue object with concurrency 2
   var q = async.queue(function(message, callback) {
-
-        db.collection("messages").insertOne(message, function(err, records) {
-          if(err){
-            console.log('insert error !!! : ', err);
-          }else {
-            console.log(' [✓] Save Message Success : ' + message.message);
-            socket.global.publish('recieve_chat_store', message);
-          }
-        });
+    db.collection("messages").insertOne(message, function(err, records) {
+      if(err){
+        console.log('insert error !!! : ', err);
+      }else {
+        console.log(' [✓] Save Message Success : ' + message.message);
+        socket.global.publish('recieve_chat_store', message);
+      }
+      db.close();
+    });
   }, 2);
-
-
 
   // add some items to the queue
   q.push(data, function(){ concole.log('ok'); });
@@ -26,7 +60,6 @@ var save_chat_message = function(socket, db, data) {
   q.drain = function() {
     console.log(' [✓] Insert All Message Complete !! ');
   };
-
 
 };
 
@@ -119,42 +152,23 @@ module.exports.run = function (worker) {
 
   var scServer = worker.scServer;
 
-
   scServer.on('connection', function (socket) {
-    // console.log('=============[ Socket Start ]==============');
     console.log(socket.id,'has connected');
-
-    // setTimeout(function() {
-    //   console.log(socket.id,'is publishing to the broadcast channel');
-    //
-    //   socket.global.publish('broadcast', {
-    //     success:1,
-    //     message:'Broadcast from ' + socket.id
-    //   });
-    //
-    // },2000);
-
-    // var chat_storeChannel = worker.exchange.subscribe('chat_store');
-    // chat_storeChannel.watch(function(data) {
-    //   console.log('=========== Chat Store =========');
-    //   console.log(chat_storeChannel.clientIds);
-    //   socket.global.publish('recieve_chat_store', data);
-    // });
 
     socket.on('chat_store', function(data){
       console.log('=========== Chat Store =========');
-      // socket.global.publish('recieve_chat_store', data);
-
+      dataInQueue = dataInQueue.concat(data);
       create_room(socket, data);
-
     });
 
     socket.on('disconnect', function(){
       console.log('=========== Disconnect =========');
     });
-
   });
 
+  scServer.on('handshake', function(socket){
+    console.log(' ========= HandShake ========');
+  });
 
 };
 
