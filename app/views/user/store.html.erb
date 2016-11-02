@@ -40,6 +40,8 @@
 <div class="container">
   <div class="row">
     <h2> ร้าน : <a id="store"><%= @login_user.name %></a> สนทนากับ : <a id="username"></a></h2>
+    <label for="txt_room_id"> Room ID : </label>
+    <input type="text" id="txt_room_id" name="txt_room_id" value="" style="width: 445px;">
     <hr>
   </div>
   <div class="row">
@@ -61,7 +63,7 @@
 
 <script>
   var socket = socketCluster.connect({
-    host:'192.168.1.147',
+    host:'192.168.1.240',
     port: 7999
   });
 
@@ -69,44 +71,49 @@
     var recieve_chat_store = socket.subscribe('recieve_chat_store');
     recieve_chat_store.watch(function(data){
 
-      var current_user = String($("#store").text().trim());
-      var current_user_data = String(data.send_form.trim());
-//      console.log(data.store);
-//      console.log(current_user);
-//      console.log(current_user_data);
+//      console.log('----- received -----');
 
-      // render list msg
-      if(current_user != current_user_data){
-        var layout_user =  $('#'+data.user);
 
-        if(current_user == String(data.store).trim()){
-          if (layout_user.length == 0){
-            $(".list_msg").append('<p id='+ data.user +' onclick="select_user(\'' + data.user + '\')">'+data.user+'<span class="badge red" id='+ data.user +'>1</span></p>');
-            var badge = $("span[id='" + data.user + "']");
+      for(i=0; i<=data.length-1;i++){
+
+        var current_user = String($("#store").text().trim());
+        var current_user_data = String(data[i].send_form).trim();
+
+        // render list msg
+        if(current_user != current_user_data){
+          var layout_user =  $('#'+data[i].user);
+
+          if(current_user == String(data[i].store).trim()){
+            if (layout_user.length == 0){
+              $(".list_msg").append('<p id='+ data[i].user +' onclick="select_user(\'' + data[i].user + '\')">'+data[i].user+'<span class="badge red" id='+ data[i].user +'>1</span></p>');
+              var badge = $("span[id='" + data[i].user + "']");
 //          console.log(badge);
-          }else {
-            if (current_user_data != $("#username").text().trim()) {
-              var current_badge = $("span[id='" + data.user + "']");
-              var element = current_badge[0];
-              var current_count = element.innerHTML
+            }else {
+              if (current_user_data != $("#username").text().trim()) {
+                var current_badge = $("span[id='" + data[i].user + "']");
+                var element = current_badge[0];
+                var current_count = element.innerHTML;
 //          console.log(elemet.innerHTML);
-              $(element).replaceWith('<span class="badge red" id=' + data.user + '>' + (parseInt(current_count) + 1) + '</span></p>');
+                $(element).replaceWith('<span class="badge red" id=' + data[i].user + '>' + (parseInt(current_count) + 1) + '</span></p>');
+              }
             }
           }
         }
+
+        // render show message
+        if($("#username").text() != "" && ($("#username").text() == data[i].send_form) && $("#store").text() == data[i].store){
+//          console.log(' IN ');
+          $(".show_msg").append('<div class="row"><div class="left-msg">' + data[i].send_form + ' พิมพ์ว่า : ' + data[i].message + '</div></div>');
+        }else if ($("#username").text() != "" && $("#store").text() == data[i].send_form){
+//          console.log(' IN ELSE ');
+          $(".show_msg").append('<div class="row"><div class="right-msg">' + data[i].store + ' พิมพ์ว่า : ' + data[i].message + '</div></div>');
+        }
+
+        // set bottom scroll
+        $(".show_msg").scrollTop($('.show_msg').height());
       }
 
-      // render show message
-      if($("#username").text() != "" && ($("#username").text() == data.send_form) && $("#store").text() == data.store){
-        console.log(' IN ');
-          $(".show_msg").append('<div class="row"><div class="left-msg">' + data.send_form + ' พิมพ์ว่า : ' + data.message + '</div></div>');
-      }else if ($("#username").text() != "" && $("#store").text() == data.send_form){
-        console.log(' IN ELSE ');
-          $(".show_msg").append('<div class="row"><div class="right-msg">' + data.store + ' พิมพ์ว่า : ' + data.message + '</div></div>');
-      }
 
-      // set bottom scroll
-      $(".show_msg").scrollTop($('.show_msg').height());
 
     });
   }
@@ -117,7 +124,8 @@
         user: $("#username").text(),
         store: $("#store").text(),
         message: $("#txt_msg").val(),
-        send_form: $("#store").text()
+        send_form: $("#store").text(),
+        room_id: $("#txt_room_id").val().trim()
       };
 
       socket.emit('chat_store', data);
@@ -130,7 +138,7 @@
   function init_load_list_chat_user(){
     $.ajax({
       method: "GET",
-      url: "http://192.168.1.147:3000/api/store_get_list_chat_user/" + $("#store").text().trim(),
+      url: "http://192.168.1.240:3000/api/store_get_list_chat_user/" + $("#store").text().trim(),
     })
         .done(function( data ) {
           console.log(data);
@@ -143,9 +151,23 @@
   }
 
   function init_load_message() {
+
+    //1. check & generate room_id
     $.ajax({
       method: "GET",
-      url: "http://192.168.1.147:3000/api/get_load_message/" + $("#store").text().trim()  + "/" + $("#username").text().trim(),
+      url: "http://192.168.1.240:3000/api/validate_generate_room/" + $("#store").text().trim()  + "/" + $("#username").text().trim(),
+    })
+        .done(function( data ) {
+          console.log('room_id : ' + data.room_id.$oid);
+          $("#txt_room_id").val(data.room_id.$oid);
+          $(".layout-loading").css('display','none');
+          $(".show_msg").css('background-color','white');
+        });
+
+    //2. load old message
+    $.ajax({
+      method: "GET",
+      url: "http://192.168.1.240:3000/api/get_load_message/" + $("#store").text().trim()  + "/" + $("#username").text().trim(),
     })
     .done(function( data ) {
 //      console.log(data);
@@ -166,6 +188,9 @@
   }
 
   function select_user(data) {
+
+
+
     console.log(data);
     if(data != ""){
       $("#username").text(data);

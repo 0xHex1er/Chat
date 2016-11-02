@@ -41,6 +41,8 @@
 
 <div class="container">
   <h1> [ คุณ <a id="user"><%= @user.name %></a> : คุยกับร้าน <a id="store"><%= @store.name %> </a>] </h1>
+  <label for="txt_room_id"> Room ID : </label>
+  <input type="text" id="txt_room_id" name="txt_room_id" value="" style="width: 445px;">
   <hr>
   <div class="row" style="margin-bottom: 5px;">
     <div id="show_msg" class="show_msg col-xs-12">
@@ -60,10 +62,8 @@
 
 <script>
   var socket = socketCluster.connect({
-    host:'192.168.1.147',
-    port: 7999,
-    pendingReconnect: true,
-    pendingReconnectTimeout: 1000
+    host:'192.168.1.240',
+    port: 7999
   });
 
   function recieve_chat_store() {
@@ -71,11 +71,13 @@
     recieve_chat_store.watch(function(data){
       console.log(data);
       //render
-      if(data.user == $("#user").text().trim()){
-        if(data.send_form == $("#store").text().trim()){
-          $("#show_msg").append('<div class="row"><div class="left-msg">' + data.store + ' พิมพ์ว่า : ' + data.message + '</div></div>');
-        }else{
-          $("#show_msg").append('<div class="row"><div class="right-msg">' + data.user + ' พิมพ์ว่า : ' + data.message + '</div></div>');
+      for(i=0; i<=data.length-1; i++){
+        if(data[i].user == $("#user").text().trim()){
+          if(data[i].send_form == $("#store").text().trim()){
+            $("#show_msg").append('<div class="row"><div class="left-msg">' + data[i].store + ' พิมพ์ว่า : ' + data[i].message + '</div></div>');
+          }else{
+            $("#show_msg").append('<div class="row"><div class="right-msg">' + data[i].user + ' พิมพ์ว่า : ' + data[i].message + '</div></div>');
+          }
         }
       }
     });
@@ -86,12 +88,26 @@
     $(".show_msg").css('background-color','#F8F8FF');
     $("#txt_msg").prop( "disabled", false );
     $("#btn_send").prop( "disabled", false );
+
+    //1. check & generate room_id
     $.ajax({
       method: "GET",
-      url: "http://192.168.1.147:3000/api/get_load_message/" + $("#store").text().trim()  + "/" + $("#user").text().trim(),
+      url: "http://192.168.1.240:3000/api/validate_generate_room/" + $("#store").text().trim()  + "/" + $("#user").text().trim(),
     })
     .done(function( data ) {
-      console.log(data);
+      console.log('room_id : ' + data.room_id.$oid);
+      $("#txt_room_id").val(data.room_id.$oid);
+      $(".layout-loading").css('display','none');
+      $(".show_msg").css('background-color','white');
+    });
+
+    //2. load old message
+    $.ajax({
+      method: "GET",
+      url: "http://192.168.1.240:3000/api/get_load_message/" + $("#store").text().trim()  + "/" + $("#user").text().trim(),
+    })
+    .done(function( data ) {
+      console.log(data.length);
       for(i=0; i<data.length; i++){
         //render
         if(data[i].user == $("#user").text().trim()){
@@ -108,13 +124,15 @@
   }
 
   function send_msg_to_store(){
-    var data = {
-      user: $("#user").text().trim(),
-      store: $("#store").text().trim(),
-      message: $("#txt_msg").val() + i,
-      send_form: $("#user").text().trim()
-    };
-    socket.emit('chat_store', data);
+      var data = {
+        user: $("#user").text().trim(),
+        store: $("#store").text().trim(),
+        message: $("#txt_msg").val(),
+        send_form: $("#user").text().trim(),
+        room_id: $("#txt_room_id").val().trim()
+      };
+      socket.emit('chat_store', data);
+
     $("#txt_msg").val("");
   }
 
@@ -142,7 +160,7 @@
       $("#txt_msg").prop( "disabled", true );
       $("#btn_send").prop( "disabled", true );
       console.log('error');
-      socket.connect();
+//      socket.connect();
     });
 
     $('#btn_send').click(function(e){

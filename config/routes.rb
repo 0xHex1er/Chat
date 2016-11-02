@@ -19,6 +19,7 @@ Rails.application.routes.draw do
   end
 
   controller :api do
+    get 'api/validate_generate_room/:store/:user' => :validate_generate_room
     get 'api/store_get_list_chat_user/:store' => :store_get_list_chat_user
     get 'api/get_load_message/:store/:user'  => :get_load_message
   end

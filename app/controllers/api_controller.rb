@@ -12,12 +12,32 @@ class ApiController < ApplicationController
     render json: result.to_json
   end
 
+  def validate_generate_room
+    result = []
+    get_room = Room.where(:store => params[:store], :user => params[:user])
+    if get_room.count == 0
+      obj_room = Room.create(:room_name => params[:store]+'|'+params[:user], :user => params[:user], :store => params[:store])
+      result = {
+          :room_id => obj_room.id,
+          :room_name => obj_room.room_name
+      }
+    else
+      result = {
+          :room_id => get_room[0].id,
+          :room_name => get_room[0].room_name
+      }
+    end
+    render json: result.to_json
+  end
+
   def get_load_message
     result = []
     get_room = Room.where(:store => params[:store], :user => params[:user])
 
     if get_room.count > 0
         obj_message = Message.where(:room_id => get_room[0].id)
+        puts "###################"
+        puts obj_message.count
         if obj_message.count > 0
           obj_message.each do |msg|
             my_msg = {

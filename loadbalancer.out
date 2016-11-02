@@ -1,6 +1,31 @@
 ok
 ok
 ok
+Error: There are no available targets
+    at EventEmitter.LoadBalancer._connectToTarget (/usr/local/lib/node_modules/loadbalancer/loadbalancer.js:169:14)
+    at /usr/local/lib/node_modules/loadbalancer/loadbalancer.js:201:16
+    at _combinedTickCallback (internal/process/next_tick.js:67:7)
+    at process._tickDomainCallback (internal/process/next_tick.js:122:9)
+ok
+ok
+ok
+Error: There are no available targets
+    at EventEmitter.LoadBalancer._connectToTarget (/usr/local/lib/node_modules/loadbalancer/loadbalancer.js:169:14)
+    at /usr/local/lib/node_modules/loadbalancer/loadbalancer.js:201:16
+    at _combinedTickCallback (internal/process/next_tick.js:67:7)
+    at process._tickDomainCallback (internal/process/next_tick.js:122:9)
+ok
+Error: There are no available targets
+    at EventEmitter.LoadBalancer._connectToTarget (/usr/local/lib/node_modules/loadbalancer/loadbalancer.js:169:14)
+    at /usr/local/lib/node_modules/loadbalancer/loadbalancer.js:201:16
+    at _combinedTickCallback (internal/process/next_tick.js:67:7)
+    at process._tickDomainCallback (internal/process/next_tick.js:122:9)
+ok
+Error: There are no available targets
+    at EventEmitter.LoadBalancer._connectToTarget (/usr/local/lib/node_modules/loadbalancer/loadbalancer.js:169:14)
+    at /usr/local/lib/node_modules/loadbalancer/loadbalancer.js:201:16
+    at _combinedTickCallback (internal/process/next_tick.js:67:7)
+    at process._tickDomainCallback (internal/process/next_tick.js:122:9)
 ok
 ok
 ok
@@ -11,6 +36,116 @@ ok
 ok
 ok
 ok
+ok
+ok
+ok
+Error: There are no available targets
+    at EventEmitter.LoadBalancer._connectToTarget (/usr/local/lib/node_modules/loadbalancer/loadbalancer.js:169:14)
+    at /usr/local/lib/node_modules/loadbalancer/loadbalancer.js:201:16
+    at _combinedTickCallback (internal/process/next_tick.js:67:7)
+    at process._tickDomainCallback (internal/process/next_tick.js:122:9)
+ok
+ok
+Error: There are no available targets
+    at EventEmitter.LoadBalancer._connectToTarget (/usr/local/lib/node_modules/loadbalancer/loadbalancer.js:169:14)
+    at /usr/local/lib/node_modules/loadbalancer/loadbalancer.js:201:16
+    at _combinedTickCallback (internal/process/next_tick.js:67:7)
+    at process._tickDomainCallback (internal/process/next_tick.js:122:9)
+ok
+Error: There are no available targets
+    at EventEmitter.LoadBalancer._connectToTarget (/usr/local/lib/node_modules/loadbalancer/loadbalancer.js:169:14)
+    at /usr/local/lib/node_modules/loadbalancer/loadbalancer.js:201:16
+    at _combinedTickCallback (internal/process/next_tick.js:67:7)
+    at process._tickDomainCallback (internal/process/next_tick.js:122:9)
+ok
+Error: There are no available targets
+    at EventEmitter.LoadBalancer._connectToTarget (/usr/local/lib/node_modules/loadbalancer/loadbalancer.js:169:14)
+    at /usr/local/lib/node_modules/loadbalancer/loadbalancer.js:201:16
+    at _combinedTickCallback (internal/process/next_tick.js:67:7)
+    at process._tickDomainCallback (internal/process/next_tick.js:122:9)
+ok
+Error: There are no available targets
+    at EventEmitter.LoadBalancer._connectToTarget (/usr/local/lib/node_modules/loadbalancer/loadbalancer.js:169:14)
+    at /usr/local/lib/node_modules/loadbalancer/loadbalancer.js:201:16
+    at _combinedTickCallback (internal/process/next_tick.js:67:7)
+    at process._tickDomainCallback (internal/process/next_tick.js:122:9)
+ok
+ok
+ok
+ok
+ok
+ok
+Error: There are no available targets
+    at EventEmitter.LoadBalancer._connectToTarget (/usr/local/lib/node_modules/loadbalancer/loadbalancer.js:169:14)
+    at /usr/local/lib/node_modules/loadbalancer/loadbalancer.js:201:16
+    at _combinedTickCallback (internal/process/next_tick.js:67:7)
+    at process._tickDomainCallback (internal/process/next_tick.js:122:9)
+ok
+Error: There are no available targets
+    at EventEmitter.LoadBalancer._connectToTarget (/usr/local/lib/node_modules/loadbalancer/loadbalancer.js:169:14)
+    at /usr/local/lib/node_modules/loadbalancer/loadbalancer.js:201:16
+    at _combinedTickCallback (internal/process/next_tick.js:67:7)
+    at process._tickDomainCallback (internal/process/next_tick.js:122:9)
+ok
+Error: There are no available targets
+    at EventEmitter.LoadBalancer._connectToTarget (/usr/local/lib/node_modules/loadbalancer/loadbalancer.js:169:14)
+    at /usr/local/lib/node_modules/loadbalancer/loadbalancer.js:201:16
+    at _combinedTickCallback (internal/process/next_tick.js:67:7)
+    at process._tickDomainCallback (internal/process/next_tick.js:122:9)
+ok
+Error: There are no available targets
+    at EventEmitter.LoadBalancer._connectToTarget (/usr/local/lib/node_modules/loadbalancer/loadbalancer.js:169:14)
+    at /usr/local/lib/node_modules/loadbalancer/loadbalancer.js:201:16
+    at _combinedTickCallback (internal/process/next_tick.js:67:7)
+    at process._tickDomainCallback (internal/process/next_tick.js:122:9)
+ok
+Error: There are no available targets
+    at EventEmitter.LoadBalancer._connectToTarget (/usr/local/lib/node_modules/loadbalancer/loadbalancer.js:169:14)
+    at /usr/local/lib/node_modules/loadbalancer/loadbalancer.js:201:16
+    at _combinedTickCallback (internal/process/next_tick.js:67:7)
+    at process._tickDomainCallback (internal/process/next_tick.js:122:9)
+ok
+Error: There are no available targets
+    at EventEmitter.LoadBalancer._connectToTarget (/usr/local/lib/node_modules/loadbalancer/loadbalancer.js:169:14)
+    at /usr/local/lib/node_modules/loadbalancer/loadbalancer.js:201:16
+    at _combinedTickCallback (internal/process/next_tick.js:67:7)
+    at process._tickDomainCallback (internal/process/next_tick.js:122:9)
+ok
+Error: There are no available targets
+    at EventEmitter.LoadBalancer._connectToTarget (/usr/local/lib/node_modules/loadbalancer/loadbalancer.js:169:14)
+    at /usr/local/lib/node_modules/loadbalancer/loadbalancer.js:201:16
+    at _combinedTickCallback (internal/process/next_tick.js:67:7)
+    at process._tickDomainCallback (internal/process/next_tick.js:122:9)
+ok
+Error: There are no available targets
+    at EventEmitter.LoadBalancer._connectToTarget (/usr/local/lib/node_modules/loadbalancer/loadbalancer.js:169:14)
+    at /usr/local/lib/node_modules/loadbalancer/loadbalancer.js:201:16
+    at _combinedTickCallback (internal/process/next_tick.js:67:7)
+    at process._tickDomainCallback (internal/process/next_tick.js:122:9)
+ok
+Error: There are no available targets
+    at EventEmitter.LoadBalancer._connectToTarget (/usr/local/lib/node_modules/loadbalancer/loadbalancer.js:169:14)
+    at /usr/local/lib/node_modules/loadbalancer/loadbalancer.js:201:16
+    at _combinedTickCallback (internal/process/next_tick.js:67:7)
+    at process._tickDomainCallback (internal/process/next_tick.js:122:9)
+ok
+Error: There are no available targets
+    at EventEmitter.LoadBalancer._connectToTarget (/usr/local/lib/node_modules/loadbalancer/loadbalancer.js:169:14)
+    at /usr/local/lib/node_modules/loadbalancer/loadbalancer.js:201:16
+    at _combinedTickCallback (internal/process/next_tick.js:67:7)
+    at process._tickDomainCallback (internal/process/next_tick.js:122:9)
+ok
+Error: There are no available targets
+    at EventEmitter.LoadBalancer._connectToTarget (/usr/local/lib/node_modules/loadbalancer/loadbalancer.js:169:14)
+    at /usr/local/lib/node_modules/loadbalancer/loadbalancer.js:201:16
+    at _combinedTickCallback (internal/process/next_tick.js:67:7)
+    at process._tickDomainCallback (internal/process/next_tick.js:122:9)
+ok
+Error: There are no available targets
+    at EventEmitter.LoadBalancer._connectToTarget (/usr/local/lib/node_modules/loadbalancer/loadbalancer.js:169:14)
+    at /usr/local/lib/node_modules/loadbalancer/loadbalancer.js:201:16
+    at _combinedTickCallback (internal/process/next_tick.js:67:7)
+    at process._tickDomainCallback (internal/process/next_tick.js:122:9)
 ok
 ok
 ok
@@ -63,56 +198,8 @@ ok
 Error: There are no available targets
     at EventEmitter.LoadBalancer._connectToTarget (/usr/local/lib/node_modules/loadbalancer/loadbalancer.js:169:14)
     at /usr/local/lib/node_modules/loadbalancer/loadbalancer.js:201:16
-    at nextTickCallbackWith0Args (node.js:420:9)
-    at process._tickDomainCallback (node.js:390:13)
-ok
-Error: There are no available targets
-    at EventEmitter.LoadBalancer._connectToTarget (/usr/local/lib/node_modules/loadbalancer/loadbalancer.js:169:14)
-    at /usr/local/lib/node_modules/loadbalancer/loadbalancer.js:201:16
-    at nextTickCallbackWith0Args (node.js:420:9)
-    at process._tickDomainCallback (node.js:390:13)
-ok
-ok
-ok
-ok
-ok
-ok
-ok
-ok
-ok
-ok
-ok
-ok
-ok
-ok
-ok
-ok
-ok
-ok
-ok
-ok
-ok
-ok
-ok
-ok
-ok
-ok
-ok
-ok
-ok
-ok
-ok
-Error: There are no available targets
-    at EventEmitter.LoadBalancer._connectToTarget (/usr/local/lib/node_modules/loadbalancer/loadbalancer.js:169:14)
-    at /usr/local/lib/node_modules/loadbalancer/loadbalancer.js:201:16
-    at nextTickCallbackWith0Args (node.js:420:9)
-    at process._tickDomainCallback (node.js:390:13)
-ok
-Error: There are no available targets
-    at EventEmitter.LoadBalancer._connectToTarget (/usr/local/lib/node_modules/loadbalancer/loadbalancer.js:169:14)
-    at /usr/local/lib/node_modules/loadbalancer/loadbalancer.js:201:16
-    at nextTickCallbackWith0Args (node.js:420:9)
-    at process._tickDomainCallback (node.js:390:13)
+    at _combinedTickCallback (internal/process/next_tick.js:67:7)
+    at process._tickDomainCallback (internal/process/next_tick.js:122:9)
 ok
 Error: There are no available targets
     at EventEmitter.LoadBalancer._connectToTarget (/usr/local/lib/node_modules/loadbalancer/loadbalancer.js:169:14)
@@ -125,6 +212,340 @@ Error: There are no available targets
     at iterate (/usr/local/lib/node_modules/loadbalancer/node_modules/async/lib/async.js:149:13)
     at async.eachSeries (/usr/local/lib/node_modules/loadbalancer/node_modules/async/lib/async.js:165:9)
     at go (/usr/local/lib/node_modules/loadbalancer/node_modules/async/lib/async.js:1079:20)
+ok
+Error: There are no available targets
+    at EventEmitter.LoadBalancer._connectToTarget (/usr/local/lib/node_modules/loadbalancer/loadbalancer.js:169:14)
+    at EventEmitter.LoadBalancer._acceptConnection (/usr/local/lib/node_modules/loadbalancer/loadbalancer.js:311:8)
+    at /usr/local/lib/node_modules/loadbalancer/loadbalancer.js:281:12
+    at /usr/local/lib/node_modules/loadbalancer/loadbalancer.js:228:7
+    at /usr/local/lib/node_modules/loadbalancer/node_modules/async/lib/async.js:157:25
+    at /Users/ideractive/Desktop/Chat/loadbalancer.js:16:9
+    at /usr/local/lib/node_modules/loadbalancer/node_modules/async/lib/async.js:1080:20
+    at iterate (/usr/local/lib/node_modules/loadbalancer/node_modules/async/lib/async.js:149:13)
+    at async.eachSeries (/usr/local/lib/node_modules/loadbalancer/node_modules/async/lib/async.js:165:9)
+    at go (/usr/local/lib/node_modules/loadbalancer/node_modules/async/lib/async.js:1079:20)
+ok
+Error: There are no available targets
+    at EventEmitter.LoadBalancer._connectToTarget (/usr/local/lib/node_modules/loadbalancer/loadbalancer.js:169:14)
+    at EventEmitter.LoadBalancer._acceptConnection (/usr/local/lib/node_modules/loadbalancer/loadbalancer.js:311:8)
+    at /usr/local/lib/node_modules/loadbalancer/loadbalancer.js:281:12
+    at /usr/local/lib/node_modules/loadbalancer/loadbalancer.js:228:7
+    at /usr/local/lib/node_modules/loadbalancer/node_modules/async/lib/async.js:157:25
+    at /Users/ideractive/Desktop/Chat/loadbalancer.js:16:9
+    at /usr/local/lib/node_modules/loadbalancer/node_modules/async/lib/async.js:1080:20
+    at iterate (/usr/local/lib/node_modules/loadbalancer/node_modules/async/lib/async.js:149:13)
+    at async.eachSeries (/usr/local/lib/node_modules/loadbalancer/node_modules/async/lib/async.js:165:9)
+    at go (/usr/local/lib/node_modules/loadbalancer/node_modules/async/lib/async.js:1079:20)
+ok
+Error: There are no available targets
+    at EventEmitter.LoadBalancer._connectToTarget (/usr/local/lib/node_modules/loadbalancer/loadbalancer.js:169:14)
+    at EventEmitter.LoadBalancer._acceptConnection (/usr/local/lib/node_modules/loadbalancer/loadbalancer.js:311:8)
+    at /usr/local/lib/node_modules/loadbalancer/loadbalancer.js:281:12
+    at /usr/local/lib/node_modules/loadbalancer/loadbalancer.js:228:7
+    at /usr/local/lib/node_modules/loadbalancer/node_modules/async/lib/async.js:157:25
+    at /Users/ideractive/Desktop/Chat/loadbalancer.js:16:9
+    at /usr/local/lib/node_modules/loadbalancer/node_modules/async/lib/async.js:1080:20
+    at iterate (/usr/local/lib/node_modules/loadbalancer/node_modules/async/lib/async.js:149:13)
+    at async.eachSeries (/usr/local/lib/node_modules/loadbalancer/node_modules/async/lib/async.js:165:9)
+    at go (/usr/local/lib/node_modules/loadbalancer/node_modules/async/lib/async.js:1079:20)
+ok
+ok
+ok
+ok
+ok
+Error: There are no available targets
+    at EventEmitter.LoadBalancer._connectToTarget (/usr/local/lib/node_modules/loadbalancer/loadbalancer.js:169:14)
+    at /usr/local/lib/node_modules/loadbalancer/loadbalancer.js:201:16
+    at _combinedTickCallback (internal/process/next_tick.js:67:7)
+    at process._tickDomainCallback (internal/process/next_tick.js:122:9)
+ok
+Error: There are no available targets
+    at EventEmitter.LoadBalancer._connectToTarget (/usr/local/lib/node_modules/loadbalancer/loadbalancer.js:169:14)
+    at /usr/local/lib/node_modules/loadbalancer/loadbalancer.js:201:16
+    at _combinedTickCallback (internal/process/next_tick.js:67:7)
+    at process._tickDomainCallback (internal/process/next_tick.js:122:9)
+ok
+Error: There are no available targets
+    at EventEmitter.LoadBalancer._connectToTarget (/usr/local/lib/node_modules/loadbalancer/loadbalancer.js:169:14)
+    at /usr/local/lib/node_modules/loadbalancer/loadbalancer.js:201:16
+    at _combinedTickCallback (internal/process/next_tick.js:67:7)
+    at process._tickDomainCallback (internal/process/next_tick.js:122:9)
+ok
+Error: There are no available targets
+    at EventEmitter.LoadBalancer._connectToTarget (/usr/local/lib/node_modules/loadbalancer/loadbalancer.js:169:14)
+    at /usr/local/lib/node_modules/loadbalancer/loadbalancer.js:201:16
+    at _combinedTickCallback (internal/process/next_tick.js:67:7)
+    at process._tickDomainCallback (internal/process/next_tick.js:122:9)
+ok
+Error: There are no available targets
+    at EventEmitter.LoadBalancer._connectToTarget (/usr/local/lib/node_modules/loadbalancer/loadbalancer.js:169:14)
+    at /usr/local/lib/node_modules/loadbalancer/loadbalancer.js:201:16
+    at _combinedTickCallback (internal/process/next_tick.js:67:7)
+    at process._tickDomainCallback (internal/process/next_tick.js:122:9)
+ok
+Error: There are no available targets
+    at EventEmitter.LoadBalancer._connectToTarget (/usr/local/lib/node_modules/loadbalancer/loadbalancer.js:169:14)
+    at /usr/local/lib/node_modules/loadbalancer/loadbalancer.js:201:16
+    at _combinedTickCallback (internal/process/next_tick.js:67:7)
+    at process._tickDomainCallback (internal/process/next_tick.js:122:9)
+ok
+Error: There are no available targets
+    at EventEmitter.LoadBalancer._connectToTarget (/usr/local/lib/node_modules/loadbalancer/loadbalancer.js:169:14)
+    at EventEmitter.LoadBalancer._acceptConnection (/usr/local/lib/node_modules/loadbalancer/loadbalancer.js:311:8)
+    at /usr/local/lib/node_modules/loadbalancer/loadbalancer.js:281:12
+    at /usr/local/lib/node_modules/loadbalancer/loadbalancer.js:228:7
+    at /usr/local/lib/node_modules/loadbalancer/node_modules/async/lib/async.js:157:25
+    at /Users/ideractive/Desktop/Chat/loadbalancer.js:16:9
+    at /usr/local/lib/node_modules/loadbalancer/node_modules/async/lib/async.js:1080:20
+    at iterate (/usr/local/lib/node_modules/loadbalancer/node_modules/async/lib/async.js:149:13)
+    at async.eachSeries (/usr/local/lib/node_modules/loadbalancer/node_modules/async/lib/async.js:165:9)
+    at go (/usr/local/lib/node_modules/loadbalancer/node_modules/async/lib/async.js:1079:20)
+ok
+Error: There are no available targets
+    at EventEmitter.LoadBalancer._connectToTarget (/usr/local/lib/node_modules/loadbalancer/loadbalancer.js:169:14)
+    at EventEmitter.LoadBalancer._acceptConnection (/usr/local/lib/node_modules/loadbalancer/loadbalancer.js:311:8)
+    at /usr/local/lib/node_modules/loadbalancer/loadbalancer.js:281:12
+    at /usr/local/lib/node_modules/loadbalancer/loadbalancer.js:228:7
+    at /usr/local/lib/node_modules/loadbalancer/node_modules/async/lib/async.js:157:25
+    at /Users/ideractive/Desktop/Chat/loadbalancer.js:16:9
+    at /usr/local/lib/node_modules/loadbalancer/node_modules/async/lib/async.js:1080:20
+    at iterate (/usr/local/lib/node_modules/loadbalancer/node_modules/async/lib/async.js:149:13)
+    at async.eachSeries (/usr/local/lib/node_modules/loadbalancer/node_modules/async/lib/async.js:165:9)
+    at go (/usr/local/lib/node_modules/loadbalancer/node_modules/async/lib/async.js:1079:20)
+ok
+ok
+ok
+ok
+ok
+ok
+ok
+ok
+ok
+ok
+ok
+ok
+ok
+ok
+ok
+ok
+ok
+ok
+ok
+Error: There are no available targets
+    at EventEmitter.LoadBalancer._connectToTarget (/usr/local/lib/node_modules/loadbalancer/loadbalancer.js:169:14)
+    at /usr/local/lib/node_modules/loadbalancer/loadbalancer.js:201:16
+    at _combinedTickCallback (internal/process/next_tick.js:67:7)
+    at process._tickDomainCallback (internal/process/next_tick.js:122:9)
+ok
+Error: There are no available targets
+    at EventEmitter.LoadBalancer._connectToTarget (/usr/local/lib/node_modules/loadbalancer/loadbalancer.js:169:14)
+    at EventEmitter.LoadBalancer._acceptConnection (/usr/local/lib/node_modules/loadbalancer/loadbalancer.js:311:8)
+    at /usr/local/lib/node_modules/loadbalancer/loadbalancer.js:281:12
+    at /usr/local/lib/node_modules/loadbalancer/loadbalancer.js:228:7
+    at /usr/local/lib/node_modules/loadbalancer/node_modules/async/lib/async.js:157:25
+    at /Users/ideractive/Desktop/Chat/loadbalancer.js:16:9
+    at /usr/local/lib/node_modules/loadbalancer/node_modules/async/lib/async.js:1080:20
+    at iterate (/usr/local/lib/node_modules/loadbalancer/node_modules/async/lib/async.js:149:13)
+    at async.eachSeries (/usr/local/lib/node_modules/loadbalancer/node_modules/async/lib/async.js:165:9)
+    at go (/usr/local/lib/node_modules/loadbalancer/node_modules/async/lib/async.js:1079:20)
+ok
+ok
+ok
+ok
+ok
+ok
+ok
+ok
+ok
+ok
+ok
+ok
+ok
+ok
+ok
+ok
+ok
+ok
+ok
+ok
+ok
+ok
+ok
+ok
+ok
+ok
+ok
+ok
+ok
+ok
+ok
+ok
+ok
+ok
+ok
+ok
+ok
+ok
+ok
+ok
+ok
+ok
+ok
+ok
+ok
+ok
+ok
+ok
+ok
+ok
+ok
+ok
+ok
+ok
+ok
+ok
+ok
+ok
+ok
+ok
+ok
+ok
+ok
+ok
+ok
+ok
+ok
+ok
+ok
+ok
+ok
+ok
+ok
+ok
+ok
+ok
+ok
+ok
+ok
+ok
+ok
+ok
+Error: There are no available targets
+    at EventEmitter.LoadBalancer._connectToTarget (/usr/local/lib/node_modules/loadbalancer/loadbalancer.js:169:14)
+    at /usr/local/lib/node_modules/loadbalancer/loadbalancer.js:201:16
+    at _combinedTickCallback (internal/process/next_tick.js:67:7)
+    at process._tickDomainCallback (internal/process/next_tick.js:122:9)
+ok
+Error: There are no available targets
+    at EventEmitter.LoadBalancer._connectToTarget (/usr/local/lib/node_modules/loadbalancer/loadbalancer.js:169:14)
+    at /usr/local/lib/node_modules/loadbalancer/loadbalancer.js:201:16
+    at _combinedTickCallback (internal/process/next_tick.js:67:7)
+    at process._tickDomainCallback (internal/process/next_tick.js:122:9)
+ok
+Error: There are no available targets
+    at EventEmitter.LoadBalancer._connectToTarget (/usr/local/lib/node_modules/loadbalancer/loadbalancer.js:169:14)
+    at /usr/local/lib/node_modules/loadbalancer/loadbalancer.js:201:16
+    at _combinedTickCallback (internal/process/next_tick.js:67:7)
+    at process._tickDomainCallback (internal/process/next_tick.js:122:9)
+ok
+Error: There are no available targets
+    at EventEmitter.LoadBalancer._connectToTarget (/usr/local/lib/node_modules/loadbalancer/loadbalancer.js:169:14)
+    at /usr/local/lib/node_modules/loadbalancer/loadbalancer.js:201:16
+    at _combinedTickCallback (internal/process/next_tick.js:67:7)
+    at process._tickDomainCallback (internal/process/next_tick.js:122:9)
+ok
+Error: There are no available targets
+    at EventEmitter.LoadBalancer._connectToTarget (/usr/local/lib/node_modules/loadbalancer/loadbalancer.js:169:14)
+    at /usr/local/lib/node_modules/loadbalancer/loadbalancer.js:201:16
+    at _combinedTickCallback (internal/process/next_tick.js:67:7)
+    at process._tickDomainCallback (internal/process/next_tick.js:122:9)
+ok
+Error: There are no available targets
+    at EventEmitter.LoadBalancer._connectToTarget (/usr/local/lib/node_modules/loadbalancer/loadbalancer.js:169:14)
+    at /usr/local/lib/node_modules/loadbalancer/loadbalancer.js:201:16
+    at _combinedTickCallback (internal/process/next_tick.js:67:7)
+    at process._tickDomainCallback (internal/process/next_tick.js:122:9)
+ok
+Error: There are no available targets
+    at EventEmitter.LoadBalancer._connectToTarget (/usr/local/lib/node_modules/loadbalancer/loadbalancer.js:169:14)
+    at /usr/local/lib/node_modules/loadbalancer/loadbalancer.js:201:16
+    at _combinedTickCallback (internal/process/next_tick.js:67:7)
+    at process._tickDomainCallback (internal/process/next_tick.js:122:9)
+ok
+ok
+ok
+ok
+ok
+ok
+ok
+ok
+ok
+ok
+ok
+ok
+Error: write EPIPE
+    at exports._errnoException (util.js:1026:11)
+    at WriteWrap.afterWrite (net.js:799:14)
+ok
+ok
+ok
+Error: write EPIPE
+    at exports._errnoException (util.js:1026:11)
+    at WriteWrap.afterWrite (net.js:799:14)
+ok
+ok
+ok
+ok
+ok
+ok
+ok
+ok
+ok
+ok
+ok
+ok
+ok
+ok
+ok
+ok
+undefined
+ok
+undefined
+ok
+undefined
+ok
+undefined
+Error: read EADDRNOTAVAIL
+    at exports._errnoException (util.js:1026:11)
+    at TCP.onread (net.js:569:26)
+ok
+undefined
+Error: read ETIMEDOUT
+    at exports._errnoException (util.js:1026:11)
+    at TCP.onread (net.js:569:26)
+ok
+undefined
+ok
+undefined
+ok
+ok
+ok
+ok
+ok
+ok
+ok
+ok
+ok
+ok
+ok
+ok
+ok
+ok
+ok
+ok
+ok
+ok
+ok
 ok
 ok
 ok
