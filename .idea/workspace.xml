@@ -2,17 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="6f30c5e0-50f5-40ea-8a7a-22c8e0c11c37" name="Default" comment="">
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Gemfile" afterPath="$PROJECT_DIR$/Gemfile" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Gemfile.lock" afterPath="$PROJECT_DIR$/Gemfile.lock" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/controllers/api_controller.rb" afterPath="$PROJECT_DIR$/app/controllers/api_controller.rb" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/models/message.rb" afterPath="$PROJECT_DIR$/app/models/message.rb" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/views/chat/chat.html.erb" afterPath="$PROJECT_DIR$/app/views/chat/chat.html.erb" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/views/layouts/application.html.erb" afterPath="$PROJECT_DIR$/app/views/layouts/application.html.erb" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/views/user/login.html.erb" afterPath="$PROJECT_DIR$/app/views/user/login.html.erb" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/views/user/store.html.erb" afterPath="$PROJECT_DIR$/app/views/user/store.html.erb" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/config/routes.rb" afterPath="$PROJECT_DIR$/config/routes.rb" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/loadbalancer.out" afterPath="$PROJECT_DIR$/loadbalancer.out" />
     </list>
     <ignored path="Chat.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -48,29 +38,29 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="store.html.erb" pinned="false" current-in-tab="false">
+      <file leaf-file-name="store.html.erb" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/app/views/user/store.html.erb">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="663">
-              <caret line="267" column="239" selection-start-line="267" selection-start-column="32" selection-end-line="267" selection-end-column="239" />
+            <state relative-caret-position="587">
+              <caret line="163" column="14" selection-start-line="163" selection-start-column="14" selection-end-line="163" selection-end-column="14" />
               <folding>
-                <marker date="1478170028000" expanded="true" signature="6308:6356" ph="..." />
-                <marker date="1478170028000" expanded="true" signature="8591:8639" ph="..." />
+                <marker date="1478173585000" expanded="true" signature="6353:6401" ph="..." />
+                <marker date="1478173585000" expanded="true" signature="8636:8684" ph="..." />
               </folding>
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="chat.html.erb" pinned="false" current-in-tab="true">
+      <file leaf-file-name="chat.html.erb" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/app/views/chat/chat.html.erb">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="299">
-              <caret line="122" column="81" selection-start-line="122" selection-start-column="63" selection-end-line="122" selection-end-column="81" />
+            <state relative-caret-position="1187">
+              <caret line="143" column="26" selection-start-line="143" selection-start-column="21" selection-end-line="143" selection-end-column="26" />
               <folding>
-                <marker date="1478171985000" expanded="true" signature="3531:3550" ph="..." />
-                <marker date="1478171985000" expanded="true" signature="3531:3579" ph="..." />
-                <marker date="1478171985000" expanded="true" signature="6071:6090" ph="..." />
-                <marker date="1478171985000" expanded="true" signature="6827:6875" ph="..." />
+                <marker date="1478172963000" expanded="true" signature="3531:3550" ph="..." />
+                <marker date="1478172963000" expanded="true" signature="3531:3579" ph="..." />
+                <marker date="1478172963000" expanded="true" signature="6071:6090" ph="..." />
+                <marker date="1478172963000" expanded="true" signature="6827:6875" ph="..." />
               </folding>
             </state>
           </provider>
@@ -160,11 +150,11 @@
         <option value="$PROJECT_DIR$/app/views/infinite/index.html.erb" />
         <option value="$PROJECT_DIR$/app/controllers/infinite_controller.rb" />
         <option value="$PROJECT_DIR$/config/routes.rb" />
-        <option value="$PROJECT_DIR$/app/views/user/store.html.erb" />
         <option value="$PROJECT_DIR$/config/initializers/assets.rb" />
         <option value="$PROJECT_DIR$/app/views/user/login.html.erb" />
         <option value="$PROJECT_DIR$/app/controllers/api_controller.rb" />
         <option value="$PROJECT_DIR$/app/views/chat/chat.html.erb" />
+        <option value="$PROJECT_DIR$/app/views/user/store.html.erb" />
       </list>
     </option>
   </component>
@@ -689,12 +679,12 @@
       <workItem from="1477973222976" duration="4498000" />
       <workItem from="1477980892249" duration="18336000" />
       <workItem from="1478059202929" duration="16222000" />
-      <workItem from="1478145373381" duration="16426000" />
+      <workItem from="1478145373381" duration="16629000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="151371000" />
+    <option name="totallyTimeSpent" value="151574000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="0" y="23" width="1920" height="1002" extended-state="6" />
@@ -1038,17 +1028,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/views/user/store.html.erb">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="663">
-          <caret line="267" column="239" selection-start-line="267" selection-start-column="32" selection-end-line="267" selection-end-column="239" />
-          <folding>
-            <marker date="1478170028000" expanded="true" signature="6308:6356" ph="..." />
-            <marker date="1478170028000" expanded="true" signature="8591:8639" ph="..." />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/config/routes.rb">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="390">
@@ -1091,13 +1070,24 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/app/views/chat/chat.html.erb">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="299">
-          <caret line="122" column="81" selection-start-line="122" selection-start-column="63" selection-end-line="122" selection-end-column="81" />
+        <state relative-caret-position="1187">
+          <caret line="143" column="26" selection-start-line="143" selection-start-column="21" selection-end-line="143" selection-end-column="26" />
           <folding>
-            <marker date="1478171985000" expanded="true" signature="3531:3550" ph="..." />
-            <marker date="1478171985000" expanded="true" signature="3531:3579" ph="..." />
-            <marker date="1478171985000" expanded="true" signature="6071:6090" ph="..." />
-            <marker date="1478171985000" expanded="true" signature="6827:6875" ph="..." />
+            <marker date="1478172963000" expanded="true" signature="3531:3550" ph="..." />
+            <marker date="1478172963000" expanded="true" signature="3531:3579" ph="..." />
+            <marker date="1478172963000" expanded="true" signature="6071:6090" ph="..." />
+            <marker date="1478172963000" expanded="true" signature="6827:6875" ph="..." />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/views/user/store.html.erb">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="587">
+          <caret line="163" column="14" selection-start-line="163" selection-start-column="14" selection-end-line="163" selection-end-column="14" />
+          <folding>
+            <marker date="1478173585000" expanded="true" signature="6353:6401" ph="..." />
+            <marker date="1478173585000" expanded="true" signature="8636:8684" ph="..." />
           </folding>
         </state>
       </provider>

@@ -153,14 +153,16 @@
       method: "GET",
       url: "http://192.168.1.240:3000/api/store_get_list_chat_user/" + $("#store").text().trim(),
     })
-        .done(function( data ) {
-          console.log(data);
+    .done(function( data ) {
+      console.log(data);
 
-          for(i=0; i<=data.length-1; i++){
-            $(".list_msg").append('<p id='+ data[i].user +' onclick="select_user(\'' + data[i].user + '\')">'+data[i].user+'<span class="badge grey" id='+ data[i].user +'>0</span></p>');
-          }
-
-        });
+      for(i=0; i<=data.length-1; i++){
+        $(".list_msg").append('<p id='+ data[i].user +' onclick="select_user(\'' + data[i].user + '\')">'+data[i].user+'<span class="badge grey" id='+ data[i].user +'>0</span></p>');
+      }
+      $(".show_msg").animate({
+        scrollTop: 9999
+      }, 400);
+    });
   }
 
   function init_load_message() {
@@ -216,7 +218,7 @@
 
       $(current_badge).replaceWith('<span class="badge grey" id='+ data +'>'+ parseInt(0) +'</span></p>');
       $(".show_msg").animate({
-        scrollTop: 1000
+        scrollTop: 9999
       }, 400);
     }
   }
