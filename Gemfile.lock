@@ -78,6 +78,9 @@ GEM
     mongoid (6.0.2)
       activemodel (~> 5.0)
       mongo (~> 2.3)
+    mongoid-pagination (0.2.0)
+      activesupport
+      mongoid
     multi_json (1.12.1)
     nio4r (1.2.1)
     nokogiri (1.6.8.1)
@@ -156,6 +159,7 @@ DEPENDENCIES
   jbuilder (~> 2.5)
   jquery-rails
   mongoid (~> 6.0, >= 6.0.2)
+  mongoid-pagination (~> 0.2.0)
   rails (~> 5.0.0)
   sass-rails (~> 5.0)
   turbolinks (~> 5)

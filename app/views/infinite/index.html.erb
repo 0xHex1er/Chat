@@ -1,0 +1,68 @@
+<%= javascript_include_tag "jquery.js" %>
+<%= javascript_include_tag "bootstrap.js" %>
+<%= javascript_include_tag "jquery.jscroll.js" %>
+<style>
+  body {font-family:Arial;}
+  #chatBox {width:300px;height:400px;border: 1px solid;overflow:scroll}
+  #loader {display:none; text-align: center; color: blue;}
+  .messages {min-height:40px;border-bottom:1px solid #1f1f1f;}
+  .date {font-size:9px;color:#1f1f1f;}
+
+</style>
+<div id="chatBox">
+  <!--Loading ANIMATION-->
+  <!--<img id="loader" src='http://opengraphicdesign.com/wp-content/uploads/2009/01/loader64.gif'>-->
+  <a id="loader" href="#">Load Message</a>
+  <!--END LOADING ANIMATION-->
+
+  <div class='inner'>
+    <% @a.each do |m| %>
+    <a><%= m.message %></a>
+    <% end %>
+  </div>
+</div>
+
+<script>
+  // GENERATE FIRST BATCH OF MESSAGES
+  //This will be where you do your SQL and PHP first
+
+//  for(var i=0;i<20;i++){
+//    $('.inner').prepend('<div class="messages">First Batch messages<br/><span class="date">'+Date()+'</span> </div>');}
+
+
+  $("#chatBox").scrollTop($("#chatBox")[0].scrollHeight);
+
+  // Assign scroll function to chatBox DIV
+  $('#chatBox').scroll(function(){
+    if ($('#chatBox').scrollTop() == 0){
+      // Display AJAX loader animation
+      $('#loader').show();
+
+      // Youd do Something like this here
+      // Query the server and paginate results
+      // Then prepend
+      /*  $.ajax({
+       url:'getmessages.php',
+       dataType:'html',
+       success:function(data){
+       $('.inner').prepend(data);
+       };
+       });*/
+      //BUT FOR EXAMPLE PURPOSES......
+      // We'll just simulate generation on server
+
+
+//      //Simulate server delay;
+//      setTimeout(function(){
+//        // Simulate retrieving 4 messages
+//        for(var i=0;i<4;i++){
+//          $('.inner').prepend('<div class="messages">Newly Loaded messages<br/><span class="date">'+Date()+'</span> </div>');
+//        }
+//        // Hide loader on success
+//        $('#loader').hide();
+//        // Reset scroll
+//        $('#chatBox').scrollTop(30);
+//      },780);
+    }
+  });
+</script>

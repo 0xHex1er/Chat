@@ -37,6 +37,15 @@
    margin: 0px auto;
  }
 
+ #load_old_message {
+   margin: 0px auto;
+   text-align: center;
+ }
+ #load_old_message:hover {
+   cursor: pointer;
+   text-decoration: none;
+ }
+
 </style>
 
 <div class="container">
@@ -61,6 +70,10 @@
 
 
 <script>
+  var global_page = 0;
+  var global_store = "";
+  var global_user = "";
+
   var socket = socketCluster.connect({
     host:'192.168.1.240',
     port: 7999
@@ -80,6 +93,9 @@
           }
         }
       }
+      $(".show_msg").animate({
+        scrollTop: 9999
+      }, 400);
     });
   }
 
@@ -107,7 +123,12 @@
       url: "http://192.168.1.240:3000/api/get_load_message/" + $("#store").text().trim()  + "/" + $("#user").text().trim(),
     })
     .done(function( data ) {
-      console.log(data.length);
+      console.log(data);
+      global_store = $("#store").text().trim();
+      global_user = $("#user").text().trim();
+
+      $("#show_msg").append('<div class="row" style="text-align: center; background-color: lightcyan;">' +
+          '                  <a id="load_old_message" alt="api/get_load_message_by_page/' + global_store + '/' + global_user + '/" role="2" onclick="load_old_message()">โหลดบทสนทนาเก่า</a></div>');
       for(i=0; i<data.length; i++){
         //render
         if(data[i].user == $("#user").text().trim()){
@@ -120,6 +141,9 @@
       }
       $(".layout-loading").css('display','none');
       $(".show_msg").css('background-color','white');
+      $(".show_msg").animate({
+        scrollTop: 9999
+      }, 400);
     });
   }
 
@@ -167,6 +191,36 @@
       send_msg_to_store();
     });
 
+
   });
 
+  function load_old_message() {
+    obj_link = document.getElementById("load_old_message");
+    var url = $(obj_link).attr("alt");
+    global_page = $(obj_link).attr("role");
+
+    console.log(global_store + ' : ' + global_user);
+    $.ajax({
+      method: "GET",
+      url: "http://192.168.1.240:3000/"+ url + global_page,
+    })
+    .done(function( data ) {
+      console.log(data);
+      obj_link = document.getElementById("load_old_message");
+//      $(obj_link).replaceWith('<div class="row" style="text-align: center;"><a id="load_old_message" alt="api/get_load_message_by_page/store01/test01/" role="' + parseInt(parseInt(global_page)+1) + '" onclick="load_old_message()">โหลดบทสนทนาเก่า</a></div>');
+      $(obj_link).replaceWith('');
+      if(data.length > 0){
+        for(i=0;i<=data.length-1;i++){
+          if(data[i].send_form == $("#store").text().trim()){
+            $("#show_msg").prepend('<div class="row"><div class="left-msg">' + data[i].store + ' พิมพ์ว่า : ' + data[i].message + '</div></div>');
+          }else{
+            $("#show_msg").prepend('<div class="row"><div class="right-msg">' + data[i].user + ' พิมพ์ว่า : ' + data[i].message + '</div></div>');
+          }
+        }
+        $("#show_msg").prepend('<div class="row" style="text-align: center; background-color: lightcyan;">' +
+            '                   <a id="load_old_message" alt="api/get_load_message_by_page/' + global_store + '/' + global_user +'/" role="' + parseInt(parseInt(global_page)+1) + '" onclick="load_old_message()">โหลดบทสนทนาเก่า</a></div>');
+      }
+    });
+
+  }
 </script>
