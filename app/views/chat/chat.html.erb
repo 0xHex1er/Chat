@@ -96,7 +96,14 @@
     //1. ตรวจสอบถ้าจำนวนเศษรวมกันได้ครบ 1 หน้า ให้เอาไป + global_page + tmp_new_page
     if(parseInt(tmp_new_page) >= 1){
       console.log('เคสที่ 1');
-      console.log('global_page + tmp_new_page : ' + global_page + ' + (' + tmp_new_page + ') = ' + parseInt(global_page+tmp_new_page));
+
+      if(tmp_new_offset==0){
+        console.log('global_page + tmp_new_page : ' + global_page + ' + (' + tmp_new_page + ') = ' + parseInt(global_page+tmp_new_page));
+        global_page = parseInt(global_page+tmp_new_page);
+        console.log(' [+] หน้าเพิ่ม');
+      }else {
+        console.log(' [-] ไม่ต้อง + หน้าเพิ่ม');
+      }
       console.log('เศษข้อความ = ' + tmp_new_offset);
     }else if(parseInt(tmp_new_page) == 0){ //ถ้าเศษข้อความรวมกันไม่ถึง 1 หน้า
       console.log('เคสที่ 2');
@@ -105,7 +112,6 @@
     }
 
     //2.ตั้งค่า Page ใหม่ให้กับ link
-    global_page = parseInt(global_page+tmp_new_page);
     global_offset = parseInt(tmp_new_offset);
     $("#load_old_message").attr("role", global_page);
     console.log(' set link page alt = ' + global_page);
@@ -253,6 +259,11 @@
         }
         $("#show_msg").prepend('<div class="row" style="text-align: center; background-color: lightcyan;">' +
             '                   <a id="load_old_message" alt="api/get_load_message_by_page/' + global_store + '/' + global_user +'/" role="' + parseInt(parseInt(global_page)+1) + '" onclick="load_old_message()">โหลดบทสนทนาเก่า</a></div>');
+
+        //Reset global_offset & global_receive_new_message
+        global_offset = 0;
+        global_receive_new_message = 0;
+        console.log('reset offset && receive_new_message');
       }
     });
 
