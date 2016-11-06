@@ -73,11 +73,44 @@
   var global_page = 0;
   var global_store = "";
   var global_user = "";
+  var global_receive_new_message = 0;
+  var global_offset = 0;
 
   var socket = socketCluster.connect({
-    host:'192.168.1.240',
-    port: 7999
+    host:'localhost',
+    port: 3333
   });
+
+  function set_link_load_old_message() {
+    var per_page = 3;
+    var tmp_new_page = parseInt(global_receive_new_message/per_page);
+    var tmp_new_offset = parseInt(global_receive_new_message%per_page);
+
+    // ดึงค่า Page ปัจจุบันจาก ปุ่มโหลดข้อความเก่า
+    global_page = parseInt($("#load_old_message").attr("role"));
+
+    console.log('========== set link load old message ==========');
+    console.log('global_receive / perpage : ' + global_receive_new_message + '/' + per_page + ' = ' + tmp_new_page);
+    console.log('global_receive % perpage : ' + global_receive_new_message + '%' + per_page + ' = ' + tmp_new_offset);
+
+    //1. ตรวจสอบถ้าจำนวนเศษรวมกันได้ครบ 1 หน้า ให้เอาไป + global_page + tmp_new_page
+    if(parseInt(tmp_new_page) >= 1){
+      console.log('เคสที่ 1');
+      console.log('global_page + tmp_new_page : ' + global_page + ' + (' + tmp_new_page + ') = ' + parseInt(global_page+tmp_new_page));
+      console.log('เศษข้อความ = ' + tmp_new_offset);
+    }else if(parseInt(tmp_new_page) == 0){ //ถ้าเศษข้อความรวมกันไม่ถึง 1 หน้า
+      console.log('เคสที่ 2');
+      console.log('global_page + tmp_new_page : ' + global_page + ' + (' + tmp_new_page + ') = ' + parseInt(global_page+tmp_new_page));
+      console.log('เศษข้อความ = ' + tmp_new_offset);
+    }
+
+    //2.ตั้งค่า Page ใหม่ให้กับ link
+    global_page = parseInt(global_page+tmp_new_page);
+    global_offset = parseInt(tmp_new_offset);
+    $("#load_old_message").attr("role", global_page);
+    console.log(' set link page alt = ' + global_page);
+    console.log(' set global offset = ' + global_offset);
+  }
 
   function recieve_chat_store() {
     var recieve_chat_store = socket.subscribe('recieve_chat_store');
@@ -92,10 +125,11 @@
             $("#show_msg").append('<div class="row"><div class="right-msg">' + data[i].user + ' พิมพ์ว่า : ' + data[i].message + '</div></div>');
           }
         }
+        global_receive_new_message += 1;
+        console.log('>>> recieve new message : '+ global_receive_new_message);
+        set_link_load_old_message();
       }
-      $(".show_msg").animate({
-        scrollTop: 9999
-      }, 400);
+      $(".show_msg").animate({scrollTop: 9999}, 400);
     });
   }
 
@@ -108,7 +142,7 @@
     //1. check & generate room_id
     $.ajax({
       method: "GET",
-      url: "http://192.168.1.240:3000/api/validate_generate_room/" + $("#store").text().trim()  + "/" + $("#user").text().trim(),
+      url: "http://localhost:3000/api/validate_generate_room/" + $("#store").text().trim()  + "/" + $("#user").text().trim(),
     })
     .done(function( data ) {
       console.log('room_id : ' + data.room_id.$oid);
@@ -120,7 +154,7 @@
     //2. load old message
     $.ajax({
       method: "GET",
-      url: "http://192.168.1.240:3000/api/get_load_message/" + $("#store").text().trim()  + "/" + $("#user").text().trim(),
+      url: "http://localhost:3000/api/get_load_message/" + $("#store").text().trim()  + "/" + $("#user").text().trim(),
     })
     .done(function( data ) {
       console.log(data);
@@ -202,7 +236,7 @@
     console.log(global_store + ' : ' + global_user);
     $.ajax({
       method: "GET",
-      url: "http://192.168.1.240:3000/"+ url + global_page,
+      url: "http://localhost:3000/"+ url + global_page + '/' + global_offset,
     })
     .done(function( data ) {
       console.log(data);
@@ -221,6 +255,7 @@
             '                   <a id="load_old_message" alt="api/get_load_message_by_page/' + global_store + '/' + global_user +'/" role="' + parseInt(parseInt(global_page)+1) + '" onclick="load_old_message()">โหลดบทสนทนาเก่า</a></div>');
       }
     });
+
 
   }
 </script>

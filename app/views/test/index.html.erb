@@ -1,0 +1,44 @@
+<%= javascript_include_tag "jquery.js" %>
+<%= javascript_include_tag "bootstrap.js" %>
+
+<style>
+  .sample{
+    border : red thin solid;
+  }
+</style>
+
+<div class="container" id="con">
+  <div id="show"></div>
+  <input type="button" id="btn_test" value="Create">
+  <input type="button" id="btn_check" value="Check">
+  <input type="button" id="btn_clone" value="Clone">
+</div>
+
+
+<script>
+  var i = 1;
+  var tmp;
+  $(document).ready(function () {
+    $("#btn_test").click(function () {
+      $('<a class="sample-click2">Test</a><br>').appendTo('#show');
+    });
+
+    $(".container").on('click','.sample-click', function(e){
+      console.log($(e.target).val($(e.target).attr('alt')));
+    });
+
+    $(".container").on('click','.sample-click2', function(e){
+      tmp = this;
+      $(this).css('background-color','red');
+    });
+    
+    $("#btn_check").click(function () {
+      console.log($("#show").children("a"));
+    });
+
+    $("#btn_clone").click(function () {
+      $(tmp).clone().appendTo("#show").append('<br>');
+
+    });
+  })
+</script>

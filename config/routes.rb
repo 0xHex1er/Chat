@@ -1,5 +1,9 @@
 Rails.application.routes.draw do
 
+  get 'fullpage/index'
+
+  get 'test/index'
+
   get 'infinite/index'
 
   get 'member/login'
@@ -24,11 +28,15 @@ Rails.application.routes.draw do
     get 'api/validate_generate_room/:store/:user' => :validate_generate_room
     get 'api/store_get_list_chat_user/:store' => :store_get_list_chat_user
     get 'api/get_load_message/:store/:user'  => :get_load_message
-    get 'api/get_load_message_by_page/:store/:user/:page'  => :get_load_message_by_page
+    get 'api/get_load_message_by_page/:store/:user/:page/:offset'  => :get_load_message_by_page
   end
 
   controller :infinite do
     get 'infinite/index' => :index
+  end
+
+  controller :fullpage do
+    get 'fullpage/index' => :index
   end
 
 end

@@ -1,0 +1,108 @@
+<%= javascript_include_tag "jquery.js" %>
+<%= javascript_include_tag "bootstrap.js" %>
+<%= javascript_include_tag "socketcluster.js" %>
+<%= stylesheet_link_tag "bootstrap.css" %>
+<%= stylesheet_link_tag "fullpage/index.css" %>
+
+<div class="container-fluid">
+  <nav class="navbar navbar-default">
+    <div class="container-fluid">
+      <!-- Brand and toggle get grouped for better mobile display -->
+      <div class="navbar-header">
+        <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
+          <span class="sr-only">Toggle navigation</span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+        </button>
+        <a class="navbar-brand" href="#">Real-Time Chat</a>
+      </div>
+
+      <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+        <ul class="nav navbar-nav navbar-right">
+          <li><a><%= image_tag("user1.png", class: "avatar") %><%= params[:user] %></a></li>
+          <li class="dropdown">
+            <a class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">
+              <%= image_tag("msg.png", class: "private-msg") %>
+              <span class="badge pull-right notification-msg">1</span>
+              <span class="caret"></span>
+            </a>
+            <ul class="dropdown-menu">
+              <% @list_room.each do |room| %>
+                  <li>
+                    <div class="layout-listroom" id="<%= room.id %>">
+                      <%= image_tag("store1.png", class: "avatar") %>
+                      <a><%= room.store %></a>
+                      <span class="count-msg">(1)</span>
+                    </div>
+                  </li>
+              <% end %>
+            </ul>
+          </li>
+          <li class="dropdown">
+            <a class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">
+              Setting <span class="caret"></span></a>
+            <ul class="dropdown-menu">
+              <li><a href="#">Action</a></li>
+              <li role="separator" class="divider"></li>
+              <li><a href="#">Separated link</a></li>
+            </ul>
+          </li>
+        </ul>
+      </div>
+    </div><!-- /.navbar-collapse -->
+  </nav>
+
+  <!-- content -->
+  <div class="container" style="min-height: 600px;">
+
+  </div>
+
+  <!-- footer -->
+  <div class="layout-chat">
+
+  </div>
+</div>
+
+<script>
+  $(document).ready(function () {
+    $(".layout-listroom").click(function(e){
+
+      var store_name = $(e.target).find('a').text();
+      var chat_element = '<div class="chat-element">' +
+                         '<div class="store-name"><a>'+ store_name +'</a>' +
+                         '<button type="button" class="close close-layout-chat">&times;</button>' +
+                         '</div>' +
+                         '<div class="show-msg">Chat-Message 1<br>Chat-Message 2<br></div>' +
+                         '<div class="send-msg"><input type="text" name="txt_message" placeholder="พิมพ์ข้อความ..."></div>' +
+                         '</div>';
+
+      var find = $(".layout-chat").children('div.chat-element').last();
+      console.log(find);
+      if(find.length==0){
+        $(chat_element).appendTo(".layout-chat");
+      }else{
+        var element_count = $(".layout-chat").children('div.chat-element').length;
+        var post = $(find).position();
+        console.log('left = ' + post.left);
+        $(chat_element).css("right", parseFloat(($(find).width()*element_count))+(20*element_count)+"px").appendTo(".layout-chat");
+      }
+
+    });
+
+    $(".layout-chat").on("click", ".close-layout-chat", function (e) {
+      console.log('close');
+      console.log($(e.target).parents("div.chat-element").hide());
+    });
+
+    $(".layout-chat").on("click", ".store-name", function (e) {
+//      $(e.target).addClass("store-name");
+      console.log($(e.target).parents("div.chat-element").toggleClass( "mini-mize" ));
+//      var show_msg = $(e.target).parents("div.chat-element").find('div.show-msg');
+//      var send_msg = $(e.target).parents("div.chat-element").find('div.send-msg');
+//      $(show_msg).css({"display":"none"});
+//      $(send_msg).css({"display":"none"});
+    });
+
+  });
+</script>

@@ -1,3 +1,4 @@
+<%= javascript_include_tag "jquery.js" %>
 <%= javascript_include_tag "bootstrap.js" %>
 <%= stylesheet_link_tag "bootstrap.css" %>
 <style>
@@ -24,6 +25,8 @@
           <% end %>
         <% end %>
       </div>
+    <hr>
+    <b>Go to : >> </b><a href="<%= fullpage_index_path(:user => params[:username]) %>">Full Web Page</a>
     </div>
   </div>
 </div>

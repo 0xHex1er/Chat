@@ -7,7 +7,7 @@
     "balancerControllerPath": "loadbalancer.js",
     "targets": [
     {
-        "host": "192.168.1.240",
+        "host": "localhsot",
         "port": 3333
     },
     {

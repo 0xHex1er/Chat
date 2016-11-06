@@ -59,17 +59,17 @@ class ApiController < ApplicationController
 
     if get_room.count > 0
       obj_message = Message.where(:room_id => get_room[0].id).order_by(:id => 'desc').paginate(:page => params[:page], :limit => 3)
-      puts "###################"
-      puts obj_message.count
       if obj_message.count > 0
-        obj_message.each do |msg|
-          my_msg = {
-              :user => msg.user,
-              :store => msg.store,
-              :message => msg.message,
-              :send_form => msg.send_form
-          }
-          result.push(my_msg)
+        obj_message.each_with_index do |msg,index|
+          if params[:offset].to_i <= index
+            my_msg = {
+                :user => msg.user,
+                :store => msg.store,
+                :message => msg.message,
+                :send_form => msg.send_form
+            }
+            result.push(my_msg)
+          end
         end
       end
     end

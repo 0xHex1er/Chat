@@ -16,6 +16,7 @@ Rails.application.config.assets.precompile += %w( bootstrap.js )
 
 Rails.application.config.assets.precompile += %w( bootstrap.css )
 Rails.application.config.assets.precompile += %w( bootstrap.css.map )
+Rails.application.config.assets.precompile += %w( fullpage/index.scss )
 
 
 
