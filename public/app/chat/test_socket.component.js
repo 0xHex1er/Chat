@@ -27,6 +27,7 @@ System.register(['angular2/core', 'angular2/platform/browser', 'angular2/http'],
             // import * as io from 'socket.io-client';
             Test_Socket_Component = (function () {
                 function Test_Socket_Component() {
+                    this.msg = 'old';
                     // this.socket = io('http://192.168.1.240:3333');
                     this.socket = socketCluster.connect({
                         host: '192.168.1.240',
@@ -35,13 +36,15 @@ System.register(['angular2/core', 'angular2/platform/browser', 'angular2/http'],
                     console.log(this.socket);
                     var recieve_chat_store = this.socket.subscribe('recieve_chat_store');
                     recieve_chat_store.watch(function (data) {
-                        console.log(data);
-                    });
+                        console.log(data[0].message);
+                        this.msg = data[0].message;
+                    }.bind(this));
                 }
                 Test_Socket_Component = __decorate([
                     core_1.Component({
                         selector: 'test-socket',
-                        template: '<h1> Test Socket With Angular2 </h1>'
+                        templateUrl: '/app/chat/test_socket.component.html',
+                        styleUrls: ['/app/chat/test_socket.css']
                     }), 
                     __metadata('design:paramtypes', [])
                 ], Test_Socket_Component);

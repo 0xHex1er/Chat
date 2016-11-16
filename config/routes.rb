@@ -43,4 +43,8 @@ Rails.application.routes.draw do
     get 'fullpage/index' => :index
   end
 
+  controller :angular do
+    get 'fullpage/index' => :index
+  end
+
 end

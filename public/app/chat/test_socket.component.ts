@@ -1,4 +1,4 @@
-import {Component} from 'angular2/core'
+import {Component, Input} from 'angular2/core'
 import {RouteConfig, ROUTER_DIRECTIVES} from 'angular2/router'
 import {bootstrap} from 'angular2/platform/browser'
 import {HTTP_PROVIDERS} from 'angular2/http'
@@ -7,11 +7,13 @@ import {HTTP_PROVIDERS} from 'angular2/http'
 
 @Component({
     selector: 'test-socket',
-    template: '<h1> Test Socket With Angular2 </h1>'
+    templateUrl: '/app/chat/test_socket.component.html',
+    styleUrls: ['/app/chat/test_socket.css']
 })
 
 export class Test_Socket_Component {
     socket:any;
+    msg:string = 'old'
 
     constructor() {
 
@@ -25,8 +27,11 @@ export class Test_Socket_Component {
 
         var recieve_chat_store = this.socket.subscribe('recieve_chat_store');
         recieve_chat_store.watch(function(data){
-            console.log(data)
-        })
+            console.log(data[0].message)
+            this.msg = data[0].message
+
+
+        }.bind(this))
 
     }
 

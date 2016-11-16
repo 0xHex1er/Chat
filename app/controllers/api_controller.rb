@@ -101,6 +101,7 @@ class ApiController < ApplicationController
     if obj_user.count > 0
       obj_user.each do |user|
         my_user = {
+            :id => user.id,
             :name => user.name,
             :role => user.role,
         }
