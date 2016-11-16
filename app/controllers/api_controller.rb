@@ -60,7 +60,7 @@ class ApiController < ApplicationController
     if get_room.count > 0
       obj_message = Message.where(:room_id => get_room[0].id).order_by(:id => 'desc').paginate(:page => params[:page], :limit => 3)
       if obj_message.count > 0
-        obj_message.each_with_index do |msg,index|
+        obj_message.to_a.each_with_index do |msg,index|
           if params[:offset].to_i <= index
             my_msg = {
                 :user => msg.user,
@@ -71,6 +71,40 @@ class ApiController < ApplicationController
             result.push(my_msg)
           end
         end
+      end
+    end
+    render json: result.to_json
+  end
+
+
+  def get_all_message
+    result = []
+    obj_message = Message.all
+    if obj_message.count > 0
+      obj_message.each do |msg|
+        my_msg = {
+            :user => msg.user,
+            :store => msg.store,
+            :message => msg.message,
+            :send_form => msg.send_form
+        }
+        result.push(my_msg)
+      end
+    end
+    render json: result.to_json
+  end
+
+
+  def get_all_user
+    result = []
+    obj_user = User.all
+    if obj_user.count > 0
+      obj_user.each do |user|
+        my_user = {
+            :name => user.name,
+            :role => user.role,
+        }
+        result.push(my_user)
       end
     end
     render json: result.to_json

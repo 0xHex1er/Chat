@@ -77,8 +77,8 @@
   var global_offset = 0;
 
   var socket = socketCluster.connect({
-    host:'localhost',
-    port: 3333
+    host:'192.168.1.240',
+    port: 7999
   });
 
   function set_link_load_old_message() {
@@ -126,8 +126,12 @@
       for(i=0; i<=data.length-1; i++){
         if(data[i].user == $("#user").text().trim()){
           if(data[i].send_form == $("#store").text().trim()){
+            console.log(' ------ store ------');
             $("#show_msg").append('<div class="row"><div class="left-msg">' + data[i].store + ' พิมพ์ว่า : ' + data[i].message + '</div></div>');
           }else{
+            console.log(' ------ user ------');
+            console.log(data[i].send_form + ', ' + data[i].send_form.length);
+            console.log($("#store").text().trim() + ', ' + $("#store").text().trim().length);
             $("#show_msg").append('<div class="row"><div class="right-msg">' + data[i].user + ' พิมพ์ว่า : ' + data[i].message + '</div></div>');
           }
         }
@@ -148,7 +152,7 @@
     //1. check & generate room_id
     $.ajax({
       method: "GET",
-      url: "http://localhost:3000/api/validate_generate_room/" + $("#store").text().trim()  + "/" + $("#user").text().trim(),
+      url: "http://192.168.1.240:3000/api/validate_generate_room/" + $("#store").text().trim()  + "/" + $("#user").text().trim(),
     })
     .done(function( data ) {
       console.log('room_id : ' + data.room_id.$oid);
@@ -160,7 +164,7 @@
     //2. load old message
     $.ajax({
       method: "GET",
-      url: "http://localhost:3000/api/get_load_message/" + $("#store").text().trim()  + "/" + $("#user").text().trim(),
+      url: "http://192.168.1.240:3000/api/get_load_message/" + $("#store").text().trim()  + "/" + $("#user").text().trim(),
     })
     .done(function( data ) {
       console.log(data);
@@ -242,7 +246,7 @@
     console.log(global_store + ' : ' + global_user);
     $.ajax({
       method: "GET",
-      url: "http://localhost:3000/"+ url + global_page + '/' + global_offset,
+      url: "http://192.168.1.240:3000/"+ url + global_page + '/' + global_offset,
     })
     .done(function( data ) {
       console.log(data);

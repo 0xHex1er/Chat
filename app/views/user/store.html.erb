@@ -76,8 +76,8 @@
   var global_user = "";
 
   var socket = socketCluster.connect({
-    host:'localhost',
-    port: 3333
+    host:'192.168.1.240',
+    port: 7999
   });
 
   function recieve_chat_store() {
@@ -151,7 +151,7 @@
   function init_load_list_chat_user(){
     $.ajax({
       method: "GET",
-      url: "http://localhost:3000/api/store_get_list_chat_user/" + $("#store").text().trim(),
+      url: "http://192.168.1.240:3000/api/store_get_list_chat_user/" + $("#store").text().trim(),
     })
     .done(function( data ) {
       console.log(data);
@@ -170,7 +170,7 @@
     //1. check & generate room_id
     $.ajax({
       method: "GET",
-      url: "http://localhost:3000/api/validate_generate_room/" + $("#store").text().trim()  + "/" + $("#username").text().trim(),
+      url: "http://192.168.1.240:3000/api/validate_generate_room/" + $("#store").text().trim()  + "/" + $("#username").text().trim(),
     })
         .done(function( data ) {
           console.log('room_id : ' + data.room_id.$oid);
@@ -182,7 +182,7 @@
     //2. load old message
     $.ajax({
       method: "GET",
-      url: "http://localhost:3000/api/get_load_message/" + $("#store").text().trim()  + "/" + $("#username").text().trim(),
+      url: "http://192.168.1.240:3000/api/get_load_message/" + $("#store").text().trim()  + "/" + $("#username").text().trim(),
     })
     .done(function( data ) {
       global_store = $("#store").text().trim();
@@ -251,7 +251,7 @@
     console.log(url);
     $.ajax({
       method: "GET",
-      url: "http://localhost:3000/"+ url + global_page,
+      url: "http://192.168.1.240:3000/"+ url + global_page,
     })
     .done(function( data ) {
       console.log(data);

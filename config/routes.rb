@@ -29,6 +29,8 @@ Rails.application.routes.draw do
     get 'api/store_get_list_chat_user/:store' => :store_get_list_chat_user
     get 'api/get_load_message/:store/:user'  => :get_load_message
     get 'api/get_load_message_by_page/:store/:user/:page/:offset'  => :get_load_message_by_page
+    get 'api/get_all_message'  => :get_all_message
+    get 'api/get_all_user'  => :get_all_user
   end
 
   controller :infinite do

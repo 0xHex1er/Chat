@@ -65,6 +65,7 @@
 </div>
 
 <script>
+  var global_element = [];
   $(document).ready(function () {
     $(".layout-listroom").click(function(e){
 
@@ -102,6 +103,16 @@
 //      var send_msg = $(e.target).parents("div.chat-element").find('div.send-msg');
 //      $(show_msg).css({"display":"none"});
 //      $(send_msg).css({"display":"none"});
+    });
+
+    $(".avatar").click(function () {
+      var div = $( "<div>" );
+
+      div.promise().done(function( arg1 ) {
+        // Will fire right away and alert "true"
+        console.log(arg1);
+      });
+
     });
 
   });
