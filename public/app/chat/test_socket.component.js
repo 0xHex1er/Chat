@@ -24,12 +24,19 @@ System.register(['angular2/core', 'angular2/platform/browser', 'angular2/http'],
                 http_1 = http_1_1;
             }],
         execute: function() {
+            // import * as io from 'socket.io-client';
             Test_Socket_Component = (function () {
                 function Test_Socket_Component() {
                     // this.socket = io('http://192.168.1.240:3333');
-                    // console.log(this.socket)
-                    // var socket = io('http://192.168.1.240:3333');
-                    // console.log(socket)
+                    this.socket = socketCluster.connect({
+                        host: '192.168.1.240',
+                        port: 7999
+                    });
+                    console.log(this.socket);
+                    var recieve_chat_store = this.socket.subscribe('recieve_chat_store');
+                    recieve_chat_store.watch(function (data) {
+                        console.log(data);
+                    });
                 }
                 Test_Socket_Component = __decorate([
                     core_1.Component({
