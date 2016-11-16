@@ -1,5 +1,7 @@
 Rails.application.routes.draw do
 
+  get 'angular/index'
+
   get 'fullpage/index'
 
   get 'test/index'

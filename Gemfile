@@ -7,6 +7,10 @@ gem 'mongoid-pagination', '~> 0.2.0'
 
 gem 'mongoid', '~> 6.0', '>= 6.0.2'
 
+# For Config Angular2
+gem 'sprockets'
+gem 'rack-cors'
+
 # Use Puma as the app server
 # gem 'puma', '~> 3.0'
 # Use SCSS for stylesheets
