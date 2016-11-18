@@ -28,10 +28,10 @@ System.register(['angular2/core', 'angular2/platform/browser', 'angular2/http'],
             Test_Socket_Component = (function () {
                 function Test_Socket_Component() {
                     this.msg = 'old';
-                    // this.socket = io('http://192.168.1.240:3333');
+                    // this.socket = io('http://localhost:3333');
                     this.socket = socketCluster.connect({
-                        host: '192.168.1.240',
-                        port: 7999
+                        host: 'localhost',
+                        port: 3333
                     });
                     console.log(this.socket);
                     var recieve_chat_store = this.socket.subscribe('recieve_chat_store');

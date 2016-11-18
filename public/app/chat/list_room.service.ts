@@ -11,7 +11,7 @@ export class List_Room_Service {
 
     getList(Success_callback:any, Error_callback:any) {
 
-        this.http.get('http://192.168.1.240:3000/api/get_all_user/')
+        this.http.get('http://localhost:3000/api/get_all_user/')
             .subscribe(
                 data => {
                     console.log(' Success ')

@@ -17,10 +17,10 @@ export class Test_Socket_Component {
 
     constructor() {
 
-        // this.socket = io('http://192.168.1.240:3333');
+        // this.socket = io('http://localhost:3333');
         this.socket = socketCluster.connect({
-            host:'192.168.1.240',
-            port: 7999
+            host:'localhost',
+            port: 3333
         });
 
         console.log(this.socket)

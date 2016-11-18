@@ -44,7 +44,8 @@ Rails.application.routes.draw do
   end
 
   controller :angular do
-    get 'fullpage/index' => :index
+    get 'angular/index' => :index
+    get 'angular/test_component' => :test_component
   end
 
 end

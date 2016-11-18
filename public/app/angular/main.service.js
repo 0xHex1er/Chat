@@ -1,4 +1,4 @@
-System.register(['angular2/core', 'angular2/http'], function(exports_1, context_1) {
+System.register(['angular2/core', "rxjs/Subject"], function(exports_1, context_1) {
     "use strict";
     var __moduleName = context_1 && context_1.id;
     var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
@@ -10,38 +10,38 @@ System.register(['angular2/core', 'angular2/http'], function(exports_1, context_
     var __metadata = (this && this.__metadata) || function (k, v) {
         if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
     };
-    var core_1, http_1;
-    var List_Room_Service;
+    var core_1, Subject_1;
+    var Main_Service;
     return {
         setters:[
             function (core_1_1) {
                 core_1 = core_1_1;
             },
-            function (http_1_1) {
-                http_1 = http_1_1;
+            function (Subject_1_1) {
+                Subject_1 = Subject_1_1;
             }],
         execute: function() {
-            List_Room_Service = (function () {
-                function List_Room_Service(http) {
-                    this.http = http;
+            Main_Service = (function () {
+                function Main_Service() {
+                    this.currentChat = new Subject_1.Subject();
+                    this.currentChat$ = this.currentChat.asObservable();
+                    if (Main_Service.instance == null) {
+                        Main_Service.instance = this;
+                    }
+                    return Main_Service.instance;
                 }
-                List_Room_Service.prototype.getList = function (Success_callback, Error_callback) {
-                    this.http.get('http://localhost:3000/api/get_all_user/')
-                        .subscribe(function (data) {
-                        console.log(' Success ');
-                        Success_callback(data.json());
-                    }, function (err) {
-                        Error_callback(err);
-                    });
+                Main_Service.prototype.changeChat = function (chatname) {
+                    console.log('Main Service');
+                    this.currentChat.next(chatname);
                 };
-                List_Room_Service = __decorate([
+                Main_Service = __decorate([
                     core_1.Injectable(), 
-                    __metadata('design:paramtypes', [http_1.Http])
-                ], List_Room_Service);
-                return List_Room_Service;
+                    __metadata('design:paramtypes', [])
+                ], Main_Service);
+                return Main_Service;
             }());
-            exports_1("List_Room_Service", List_Room_Service);
+            exports_1("Main_Service", Main_Service);
         }
     }
 });
-//# sourceMappingURL=list_room.service.js.map
+//# sourceMappingURL=main.service.js.map
