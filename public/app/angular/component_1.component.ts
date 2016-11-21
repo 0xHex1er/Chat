@@ -23,8 +23,16 @@ export class A_Component {
 
     private _main_serv:any;
 
-    constructor(user_serv:User_Service, main_serv:Main_Service){
-        this._list_of_user = user_serv.user_collection
+    constructor(user_serv: User_Service, main_serv: Main_Service){
+        // this._list_of_user = user_serv.user_collection
+
+        user_serv.getList(function(result){
+            console.log(result)
+            this._list_of_user = result
+        }.bind(this),
+            function(err){console.log(' Error getList() : ' + err )}
+        )
+
         this._main_serv = main_serv
         console.log(" Create Component 1")
     }

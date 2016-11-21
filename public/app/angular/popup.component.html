@@ -1,0 +1,50 @@
+<style>
+    .popup-container {
+        width: 250px;
+        /*height: 300px;*/
+        border: blue thin solid;
+        display: inline-block;
+    }
+    .popup-username {
+        background-color: dodgerblue;
+        font-weight: bolder;
+    }
+    .popup-user-id {
+        /*font-weight: bolder;*/
+        font-size: xx-small;
+        line-height: 6px;
+    }
+    .popup-message {
+        border: dodgerblue thin solid;
+        min-height: 250px;
+        max-height: 250px;
+        margin: 0 auto;
+        width: 96%;
+        overflow-y: auto;
+    }
+    .btn-send {
+        margin-top: 3px;
+        margin-bottom: 3px;
+        margin-left: 1px;
+        margin-right: 5px;
+    }
+    .txt-message {
+        width: 184px;
+        margin-top: 3px;
+        margin-bottom: 3px;
+        margin-left: 5px;
+        margin-right: 1px;
+    }
+</style>
+
+<div class="popup-container">
+    <p class="popup-username">{{_user_name}}</p>
+    <p class="popup-user-id">{{_user_id}}</p>
+
+    <div class="popup-message" align="center">
+        <p *ngFor="#chat of _message">{{chat.message}}</p>
+    </div>
+    <input class="txt-message" [(ngModel)]="_msg" />
+    <button class="btn-send" (click)="send_message()">Send</button>
+</div>
+

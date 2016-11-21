@@ -1,4 +1,4 @@
-System.register(['angular2/core', 'angular2/platform/browser', 'angular2/http', './main.service'], function(exports_1, context_1) {
+System.register(['angular2/core', 'angular2/platform/browser', 'angular2/http', './main.service', './popup.component'], function(exports_1, context_1) {
     "use strict";
     var __moduleName = context_1 && context_1.id;
     var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
@@ -10,7 +10,7 @@ System.register(['angular2/core', 'angular2/platform/browser', 'angular2/http', 
     var __metadata = (this && this.__metadata) || function (k, v) {
         if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
     };
-    var core_1, browser_1, http_1, main_service_1;
+    var core_1, browser_1, http_1, main_service_1, popup_component_1;
     var B_Component;
     return {
         setters:[
@@ -25,6 +25,9 @@ System.register(['angular2/core', 'angular2/platform/browser', 'angular2/http', 
             },
             function (main_service_1_1) {
                 main_service_1 = main_service_1_1;
+            },
+            function (popup_component_1_1) {
+                popup_component_1 = popup_component_1_1;
             }],
         execute: function() {
             B_Component = (function () {
@@ -34,6 +37,7 @@ System.register(['angular2/core', 'angular2/platform/browser', 'angular2/http', 
                     this.zone = zone;
                     this._list_of_array_collection = [];
                     this._test_val = "Test Message";
+                    this._popup_name = "";
                     this.message = { "name": "Test Message" };
                     //    this.zone = zone;
                     //     this._list_of_array_collection = main_serv.array_collection
@@ -42,12 +46,13 @@ System.register(['angular2/core', 'angular2/platform/browser', 'angular2/http', 
                     main_serv.currentChat$.subscribe(function (chatname) {
                         _this.zone.run(function () {
                             context._test_val = chatname.name;
+                            context._popup_name = chatname.name;
                             context._list_of_array_collection.push({
-                                "id": chatname.id,
+                                "id": chatname.id['$oid'],
                                 "name": chatname.name
                             });
                             context.message.name = chatname.name;
-                            console.log(context);
+                            console.log(context._list_of_array_collection);
                             console.log('Observ = ', chatname.name);
                         });
                     });
@@ -80,8 +85,9 @@ System.register(['angular2/core', 'angular2/platform/browser', 'angular2/http', 
                 B_Component = __decorate([
                     core_1.Component({
                         selector: 'render-B',
-                        template: "<li *ngFor=\"#user of _list_of_array_collection\" style=\"margin: 10px;\">\n                    <p>{{user.name}}</p>\n               </li><p>{{getMessage()}}</p>",
-                        providers: [main_service_1.Main_Service]
+                        template: "<div style=\"position: relative;\">\n                   <render-popup \n                        *ngFor=\"#popup of _list_of_array_collection\"\n                        [_user_id]=\"popup.id\" [_user_name]=\"popup.name\">\n                                         \n                   </render-popup>\n               </div>",
+                        providers: [main_service_1.Main_Service],
+                        directives: [popup_component_1.Popup_Component]
                     }), 
                     __metadata('design:paramtypes', [main_service_1.Main_Service, core_1.NgZone])
                 ], B_Component);

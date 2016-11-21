@@ -3,20 +3,27 @@ import {RouteConfig, ROUTER_DIRECTIVES} from 'angular2/router'
 import {bootstrap} from 'angular2/platform/browser'
 import {HTTP_PROVIDERS} from 'angular2/http'
 import {Main_Service} from './main.service'
+import {Popup_Component} from './popup.component'
 
 
 @Component({
     selector: 'render-B',
-    template: `<li *ngFor="#user of _list_of_array_collection" style="margin: 10px;">
-                    <p>{{user.name}}</p>
-               </li><p>{{getMessage()}}</p>`,
-    providers: [Main_Service]
+    template: `<div style="position: relative;">
+                   <render-popup 
+                        *ngFor="#popup of _list_of_array_collection"
+                        [_user_id]="popup.id" [_user_name]="popup.name">
+                                         
+                   </render-popup>
+               </div>`,
+    providers: [Main_Service],
+    directives: [Popup_Component]
 })
 
 export class B_Component {
 
     _list_of_array_collection:any = [];
     _test_val:string = "Test Message";
+    _popup_name:string = ""
 
     message : any = {"name": "Test Message" }
     //zone: NgZone;
@@ -24,7 +31,6 @@ export class B_Component {
     //    this.zone = zone;
     //     this._list_of_array_collection = main_serv.array_collection
         console.log(" Create Component 2", this)
-
 
         let context  = this;
         main_serv.currentChat$.subscribe(
@@ -34,13 +40,14 @@ export class B_Component {
 
                 this.zone.run(function(){
                     context._test_val = chatname.name;
+                    context._popup_name = chatname.name;
                     context._list_of_array_collection.push({
-                        "id": chatname.id,
+                        "id": chatname.id['$oid'],
                         "name": chatname.name
                     })
                     context.message.name = chatname.name
 
-                    console.log(context)
+                    console.log(context._list_of_array_collection)
                     console.log('Observ = ', chatname.name)
                 })
 

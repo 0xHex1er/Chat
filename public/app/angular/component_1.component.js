@@ -35,8 +35,12 @@ System.register(['angular2/core', 'angular2/platform/browser', 'angular2/http', 
         execute: function() {
             A_Component = (function () {
                 function A_Component(user_serv, main_serv) {
+                    // this._list_of_user = user_serv.user_collection
                     this._list_of_user = [];
-                    this._list_of_user = user_serv.user_collection;
+                    user_serv.getList(function (result) {
+                        console.log(result);
+                        this._list_of_user = result;
+                    }.bind(this), function (err) { console.log(' Error getList() : ' + err); });
                     this._main_serv = main_serv;
                     console.log(" Create Component 1");
                 }
